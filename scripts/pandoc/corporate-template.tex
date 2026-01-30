@@ -1,0 +1,79 @@
+% Template Pandoc LaTeX corporate (A4, marges 2cm, en-têtes/pieds, pagination)
+% Objectif: rendu proche livrable DSI / cabinet.
+
+\documentclass[$fontsize$,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\usepackage{setspace}
+\setstretch{$if(linestretch)$$linestretch$$else$1.15$endif$}
+
+\usepackage{graphicx}
+\usepackage{longtable,booktabs,array}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{$if(projectname)$$projectname$$else$X-Zone$endif$}}
+\rhead{\textbf{$if(documenttype)$$documenttype$$else$Document d’Architecture Technique (DAT)$endif$}}
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% Titres compacts et hiérarchisés
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{0.8em}{}
+
+% Tableaux plus lisibles
+\renewcommand{\arraystretch}{1.2}
+
+% Page de garde
+\newcommand{\makecorporatecover}{
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    {\Huge\bfseries $title$\\[0.8cm]}
+    {\Large\bfseries $if(documenttype)$$documenttype$$else$Document d’Architecture Technique (DAT)$endif$\\[0.8cm]}
+    \vspace{1.2cm}
+    \begin{tabular}{@{}p{4.2cm}p{10cm}@{}}
+      \textbf{Version} & $if(version)$$version$$else$N/A$endif$\\
+      \textbf{Date} & $date$\\
+      \textbf{Auteur / Équipe} & $if(author)$$author$$else$Non spécifié dans le dépôt$endif$\\
+      \textbf{Confidentialité} & $if(confidentiality)$$confidentiality$$else$À renseigner$endif$\\
+    \end{tabular}
+    \vfill
+    {\large\textit{Document généré à partir d’une analyse statique du dépôt (code + documentation interne).}}
+    \vspace*{1cm}
+  \end{center}
+  \newpage
+}
+
+\begin{document}
+
+$if(title)$
+\makecorporatecover
+$endif$
+
+% Table des matières
+$if(toc)$
+{\hypersetup{linkcolor=black}
+\tableofcontents
+}
+\newpage
+$endif$
+
+$body$
+
+\end{document}

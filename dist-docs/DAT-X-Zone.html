@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DAT-X-Zone</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">DAT-X-Zone</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#xzone-document-darchitecture-technique-dat"
+id="toc-xzone-document-darchitecture-technique-dat"><span
+class="toc-section-number">1</span> X‑Zone — Document d’Architecture
+Technique (DAT)</a>
+<ul>
+<li><a href="#historique-et-gestion-du-document"
+id="toc-historique-et-gestion-du-document"><span
+class="toc-section-number">1.1</span> 1. Historique et gestion du
+document</a></li>
+<li><a href="#résumé-exécutif" id="toc-résumé-exécutif"><span
+class="toc-section-number">1.2</span> 2. Résumé exécutif</a>
+<ul>
+<li><a href="#contexte-du-projet" id="toc-contexte-du-projet"><span
+class="toc-section-number">1.2.1</span> 2.1 Contexte du projet</a></li>
+<li><a
+href="#objectifs-métiers-observables-dans-les-routes-modèles-migrations"
+id="toc-objectifs-métiers-observables-dans-les-routes-modèles-migrations"><span
+class="toc-section-number">1.2.2</span> 2.2 Objectifs métiers
+(observables dans les routes, modèles, migrations)</a></li>
+<li><a href="#enjeux-techniques" id="toc-enjeux-techniques"><span
+class="toc-section-number">1.2.3</span> 2.3 Enjeux techniques</a></li>
+<li><a href="#contraintes-identifiées-issues-du-code-et-des-docs"
+id="toc-contraintes-identifiées-issues-du-code-et-des-docs"><span
+class="toc-section-number">1.2.4</span> 2.4 Contraintes identifiées
+(issues du code et des docs)</a></li>
+<li><a href="#bénéfices-de-larchitecture-retenue"
+id="toc-bénéfices-de-larchitecture-retenue"><span
+class="toc-section-number">1.2.5</span> 2.5 Bénéfices de l’architecture
+retenue</a></li>
+</ul></li>
+<li><a href="#présentation-générale-de-lapplication"
+id="toc-présentation-générale-de-lapplication"><span
+class="toc-section-number">1.3</span> 3. Présentation générale de
+l’application</a>
+<ul>
+<li><a href="#finalité-de-lapplication"
+id="toc-finalité-de-lapplication"><span
+class="toc-section-number">1.3.1</span> 3.1 Finalité de
+l’application</a></li>
+<li><a
+href="#périmètre-fonctionnel-dérivé-de-backendroutes-et-backenddatabasemigrations"
+id="toc-périmètre-fonctionnel-dérivé-de-backendroutes-et-backenddatabasemigrations"><span
+class="toc-section-number">1.3.2</span> 3.2 Périmètre fonctionnel
+(dérivé de <code>Backend/routes/*</code> et
+<code>Backend/database/migrations/*</code>)</a></li>
+<li><a href="#hors-périmètre" id="toc-hors-périmètre"><span
+class="toc-section-number">1.3.3</span> 3.3 Hors périmètre</a></li>
+<li><a
+href="#typologie-des-utilisateurs-observée-via-rbac-routes-et-api"
+id="toc-typologie-des-utilisateurs-observée-via-rbac-routes-et-api"><span
+class="toc-section-number">1.3.4</span> 3.4 Typologie des utilisateurs
+(observée via RBAC, routes et API)</a></li>
+<li><a href="#environnements-cibles"
+id="toc-environnements-cibles"><span
+class="toc-section-number">1.3.5</span> 3.5 Environnements
+cibles</a></li>
+</ul></li>
+<li><a href="#architecture-globale" id="toc-architecture-globale"><span
+class="toc-section-number">1.4</span> 4. Architecture globale</a>
+<ul>
+<li><a href="#vue-densemble-frontend-backend"
+id="toc-vue-densemble-frontend-backend"><span
+class="toc-section-number">1.4.1</span> 4.1 Vue d’ensemble Frontend /
+Backend</a></li>
+<li><a href="#principe-de-séparation-des-couches"
+id="toc-principe-de-séparation-des-couches"><span
+class="toc-section-number">1.4.2</span> 4.2 Principe de séparation des
+couches</a></li>
+<li><a href="#protocoles-et-formats-déchange"
+id="toc-protocoles-et-formats-déchange"><span
+class="toc-section-number">1.4.3</span> 4.3 Protocoles et formats
+d’échange</a></li>
+<li><a href="#schéma-logique-des-flux-applicatifs-description-textuelle"
+id="toc-schéma-logique-des-flux-applicatifs-description-textuelle"><span
+class="toc-section-number">1.4.4</span> 4.4 Schéma logique des flux
+applicatifs (description textuelle)</a></li>
+<li><a href="#principes-darchitecture-retenus"
+id="toc-principes-darchitecture-retenus"><span
+class="toc-section-number">1.4.5</span> 4.5 Principes d’architecture
+retenus</a></li>
+</ul></li>
+<li><a href="#architecture-backend-détaillée"
+id="toc-architecture-backend-détaillée"><span
+class="toc-section-number">1.5</span> 5. Architecture Backend
+(détaillée)</a>
+<ul>
+<li><a href="#stack-technique-complète-référence-backendcomposer.json"
+id="toc-stack-technique-complète-référence-backendcomposer.json"><span
+class="toc-section-number">1.5.1</span> 5.1 Stack technique complète
+(référence <code>Backend/composer.json</code>)</a></li>
+<li><a href="#organisation-des-dossiers-structure-observée"
+id="toc-organisation-des-dossiers-structure-observée"><span
+class="toc-section-number">1.5.2</span> 5.2 Organisation des dossiers
+(structure observée)</a></li>
+<li><a href="#description-des-couches"
+id="toc-description-des-couches"><span
+class="toc-section-number">1.5.3</span> 5.3 Description des
+couches</a></li>
+<li><a
+href="#flux-dexécution-dune-requête-exemple-création-commande-web"
+id="toc-flux-dexécution-dune-requête-exemple-création-commande-web"><span
+class="toc-section-number">1.5.4</span> 5.4 Flux d’exécution d’une
+requête (exemple “création commande web”)</a></li>
+<li><a href="#gestion-des-transactions"
+id="toc-gestion-des-transactions"><span
+class="toc-section-number">1.5.5</span> 5.5 Gestion des
+transactions</a></li>
+<li><a href="#accès-aux-données-et-orm"
+id="toc-accès-aux-données-et-orm"><span
+class="toc-section-number">1.5.6</span> 5.6 Accès aux données et
+ORM</a></li>
+<li><a href="#gestion-des-erreurs" id="toc-gestion-des-erreurs"><span
+class="toc-section-number">1.5.7</span> 5.7 Gestion des erreurs</a></li>
+<li><a href="#journalisation-logs" id="toc-journalisation-logs"><span
+class="toc-section-number">1.5.8</span> 5.8 Journalisation
+(logs)</a></li>
+<li><a href="#sécurité-backend" id="toc-sécurité-backend"><span
+class="toc-section-number">1.5.9</span> 5.9 Sécurité Backend</a></li>
+<li><a href="#api" id="toc-api"><span
+class="toc-section-number">1.5.10</span> 5.10 API</a></li>
+</ul></li>
+<li><a href="#architecture-frontend-détaillée-dossier-frontend"
+id="toc-architecture-frontend-détaillée-dossier-frontend"><span
+class="toc-section-number">1.6</span> 6. Architecture Frontend
+(détaillée) — dossier <code>frontend/</code></a>
+<ul>
+<li><a href="#stack-technique-référence-frontendpackage.json"
+id="toc-stack-technique-référence-frontendpackage.json"><span
+class="toc-section-number">1.6.1</span> 6.1 Stack technique (référence
+<code>frontend/package.json</code>)</a></li>
+<li><a href="#organisation-globale-du-code"
+id="toc-organisation-globale-du-code"><span
+class="toc-section-number">1.6.2</span> 6.2 Organisation globale du
+code</a></li>
+<li><a href="#architecture-des-composants"
+id="toc-architecture-des-composants"><span
+class="toc-section-number">1.6.3</span> 6.3 Architecture des
+composants</a></li>
+<li><a href="#gestion-de-létat" id="toc-gestion-de-létat"><span
+class="toc-section-number">1.6.4</span> 6.4 Gestion de l’état</a></li>
+<li><a href="#routing" id="toc-routing"><span
+class="toc-section-number">1.6.5</span> 6.5 Routing</a></li>
+<li><a href="#communication-avec-le-backend"
+id="toc-communication-avec-le-backend"><span
+class="toc-section-number">1.6.6</span> 6.6 Communication avec le
+Backend</a></li>
+<li><a href="#gestion-des-erreurs-et-des-chargements"
+id="toc-gestion-des-erreurs-et-des-chargements"><span
+class="toc-section-number">1.6.7</span> 6.7 Gestion des erreurs et des
+chargements</a></li>
+<li><a href="#sécurité-frontend" id="toc-sécurité-frontend"><span
+class="toc-section-number">1.6.8</span> 6.8 Sécurité Frontend</a></li>
+<li><a href="#performance-et-bonnes-pratiques"
+id="toc-performance-et-bonnes-pratiques"><span
+class="toc-section-number">1.6.9</span> 6.9 Performance et bonnes
+pratiques</a></li>
+</ul></li>
+<li><a href="#configuration-et-environnements"
+id="toc-configuration-et-environnements"><span
+class="toc-section-number">1.7</span> 7. Configuration et
+environnements</a>
+<ul>
+<li><a href="#variables-denvironnement"
+id="toc-variables-denvironnement"><span
+class="toc-section-number">1.7.1</span> 7.1 Variables
+d’environnement</a></li>
+<li><a href="#séparation-dev-test-recette-production"
+id="toc-séparation-dev-test-recette-production"><span
+class="toc-section-number">1.7.2</span> 7.2 Séparation dev / test /
+recette / production</a></li>
+<li><a href="#paramètres-critiques" id="toc-paramètres-critiques"><span
+class="toc-section-number">1.7.3</span> 7.3 Paramètres
+critiques</a></li>
+<li><a href="#gestion-des-secrets" id="toc-gestion-des-secrets"><span
+class="toc-section-number">1.7.4</span> 7.4 Gestion des secrets</a></li>
+</ul></li>
+<li><a href="#installation-et-mise-en-service"
+id="toc-installation-et-mise-en-service"><span
+class="toc-section-number">1.8</span> 8. Installation et mise en
+service</a>
+<ul>
+<li><a href="#prérequis-techniques" id="toc-prérequis-techniques"><span
+class="toc-section-number">1.8.1</span> 8.1 Prérequis
+techniques</a></li>
+<li><a href="#procédure-dinstallation-backend"
+id="toc-procédure-dinstallation-backend"><span
+class="toc-section-number">1.8.2</span> 8.2 Procédure d’installation
+Backend</a></li>
+<li><a href="#procédure-dinstallation-frontend"
+id="toc-procédure-dinstallation-frontend"><span
+class="toc-section-number">1.8.3</span> 8.3 Procédure d’installation
+Frontend</a></li>
+<li><a href="#lancement-de-lapplication"
+id="toc-lancement-de-lapplication"><span
+class="toc-section-number">1.8.4</span> 8.4 Lancement de
+l’application</a></li>
+<li><a href="#vérifications-postinstallation"
+id="toc-vérifications-postinstallation"><span
+class="toc-section-number">1.8.5</span> 8.5 Vérifications
+post‑installation</a></li>
+</ul></li>
+<li><a href="#déploiement-et-exploitation"
+id="toc-déploiement-et-exploitation"><span
+class="toc-section-number">1.9</span> 9. Déploiement et exploitation</a>
+<ul>
+<li><a href="#stratégie-de-déploiement"
+id="toc-stratégie-de-déploiement"><span
+class="toc-section-number">1.9.1</span> 9.1 Stratégie de
+déploiement</a></li>
+<li><a href="#environnements" id="toc-environnements"><span
+class="toc-section-number">1.9.2</span> 9.2 Environnements</a></li>
+<li><a href="#rollback" id="toc-rollback"><span
+class="toc-section-number">1.9.3</span> 9.3 Rollback</a></li>
+<li><a href="#supervision-et-monitoring"
+id="toc-supervision-et-monitoring"><span
+class="toc-section-number">1.9.4</span> 9.4 Supervision et
+monitoring</a></li>
+<li><a href="#sauvegardes" id="toc-sauvegardes"><span
+class="toc-section-number">1.9.5</span> 9.5 Sauvegardes</a></li>
+</ul></li>
+<li><a href="#sécurité-et-conformité"
+id="toc-sécurité-et-conformité"><span
+class="toc-section-number">1.10</span> 10. Sécurité et conformité</a>
+<ul>
+<li><a href="#bonnes-pratiques-appliquées-preuves-dans-le-dépôt"
+id="toc-bonnes-pratiques-appliquées-preuves-dans-le-dépôt"><span
+class="toc-section-number">1.10.1</span> 10.1 Bonnes pratiques
+appliquées (preuves dans le dépôt)</a></li>
+<li><a href="#risques-identifiés-issus-du-code"
+id="toc-risques-identifiés-issus-du-code"><span
+class="toc-section-number">1.10.2</span> 10.2 Risques identifiés (issus
+du code)</a></li>
+<li><a
+href="#mesures-de-mitigation-orientées-mise-en-conformité-à-valider"
+id="toc-mesures-de-mitigation-orientées-mise-en-conformité-à-valider"><span
+class="toc-section-number">1.10.3</span> 10.3 Mesures de mitigation
+(orientées mise en conformité, à valider)</a></li>
+<li><a href="#conformité-réglementaire"
+id="toc-conformité-réglementaire"><span
+class="toc-section-number">1.10.4</span> 10.4 Conformité
+réglementaire</a></li>
+</ul></li>
+<li><a href="#performance-et-scalabilité"
+id="toc-performance-et-scalabilité"><span
+class="toc-section-number">1.11</span> 11. Performance et
+scalabilité</a>
+<ul>
+<li><a href="#points-de-charge" id="toc-points-de-charge"><span
+class="toc-section-number">1.11.1</span> 11.1 Points de charge</a></li>
+<li><a href="#limites-identifiées" id="toc-limites-identifiées"><span
+class="toc-section-number">1.11.2</span> 11.2 Limites
+identifiées</a></li>
+<li><a href="#stratégies-doptimisation-existantes"
+id="toc-stratégies-doptimisation-existantes"><span
+class="toc-section-number">1.11.3</span> 11.3 Stratégies d’optimisation
+(existantes)</a></li>
+<li><a href="#évolutivité" id="toc-évolutivité"><span
+class="toc-section-number">1.11.4</span> 11.4 Évolutivité</a></li>
+</ul></li>
+<li><a href="#maintenance-et-évolutions"
+id="toc-maintenance-et-évolutions"><span
+class="toc-section-number">1.12</span> 12. Maintenance et évolutions</a>
+<ul>
+<li><a href="#points-sensibles-du-code"
+id="toc-points-sensibles-du-code"><span
+class="toc-section-number">1.12.1</span> 12.1 Points sensibles du
+code</a></li>
+<li><a href="#bonnes-pratiques-de-maintenance"
+id="toc-bonnes-pratiques-de-maintenance"><span
+class="toc-section-number">1.12.2</span> 12.2 Bonnes pratiques de
+maintenance</a></li>
+<li><a href="#stratégie-dévolution" id="toc-stratégie-dévolution"><span
+class="toc-section-number">1.12.3</span> 12.3 Stratégie
+d’évolution</a></li>
+<li><a href="#dette-technique-identifiée-factuelle"
+id="toc-dette-technique-identifiée-factuelle"><span
+class="toc-section-number">1.12.4</span> 12.4 Dette technique identifiée
+(factuelle)</a></li>
+</ul></li>
+<li><a href="#annexes" id="toc-annexes"><span
+class="toc-section-number">1.13</span> 13. Annexes</a>
+<ul>
+<li><a href="#glossaire" id="toc-glossaire"><span
+class="toc-section-number">1.13.1</span> 13.1 Glossaire</a></li>
+<li><a href="#acronymes" id="toc-acronymes"><span
+class="toc-section-number">1.13.2</span> 13.2 Acronymes</a></li>
+<li><a href="#références-techniques-dépôt"
+id="toc-références-techniques-dépôt"><span
+class="toc-section-number">1.13.3</span> 13.3 Références techniques
+(dépôt)</a></li>
+<li><a href="#notes-complémentaires"
+id="toc-notes-complémentaires"><span
+class="toc-section-number">1.13.4</span> 13.4 Notes
+complémentaires</a></li>
+</ul></li>
+<li><a href="#présentation-générale-du-projet"
+id="toc-présentation-générale-du-projet"><span
+class="toc-section-number">1.14</span> 1. Présentation générale du
+projet</a>
+<ul>
+<li><a href="#objectif-de-lapplication"
+id="toc-objectif-de-lapplication"><span
+class="toc-section-number">1.14.1</span> 1.1 Objectif de
+l’application</a></li>
+<li><a href="#périmètre-fonctionnel-daprès-routes-migrations"
+id="toc-périmètre-fonctionnel-daprès-routes-migrations"><span
+class="toc-section-number">1.14.2</span> 1.2 Périmètre fonctionnel
+(d’après routes + migrations)</a></li>
+<li><a href="#public-cible" id="toc-public-cible"><span
+class="toc-section-number">1.14.3</span> 1.3 Public cible</a></li>
+</ul></li>
+<li><a href="#architecture-globale-1"
+id="toc-architecture-globale-1"><span
+class="toc-section-number">1.15</span> 2. Architecture globale</a>
+<ul>
+<li><a href="#vue-densemble" id="toc-vue-densemble"><span
+class="toc-section-number">1.15.1</span> 2.1 Vue d’ensemble</a></li>
+<li><a href="#schéma-logique-de-communication"
+id="toc-schéma-logique-de-communication"><span
+class="toc-section-number">1.15.2</span> 2.2 Schéma logique de
+communication</a></li>
+<li><a href="#choix-techniques-et-justifications-daprès-manifests"
+id="toc-choix-techniques-et-justifications-daprès-manifests"><span
+class="toc-section-number">1.15.3</span> 2.3 Choix techniques et
+justifications (d’après manifests)</a></li>
+</ul></li>
+<li><a href="#backend" id="toc-backend"><span
+class="toc-section-number">1.16</span> 3. Backend</a>
+<ul>
+<li><a href="#stack-technique" id="toc-stack-technique"><span
+class="toc-section-number">1.16.1</span> 3.1 Stack technique</a></li>
+<li><a href="#structure-des-dossiers-et-responsabilités"
+id="toc-structure-des-dossiers-et-responsabilités"><span
+class="toc-section-number">1.16.2</span> 3.2 Structure des dossiers et
+responsabilités</a></li>
+<li><a href="#principaux-modules-et-flux-métier"
+id="toc-principaux-modules-et-flux-métier"><span
+class="toc-section-number">1.16.3</span> 3.3 Principaux modules et flux
+métier</a></li>
+<li><a href="#authentification-autorisations"
+id="toc-authentification-autorisations"><span
+class="toc-section-number">1.16.4</span> 3.4 Authentification &amp;
+autorisations</a></li>
+<li><a href="#gestion-des-erreurs-et-logs"
+id="toc-gestion-des-erreurs-et-logs"><span
+class="toc-section-number">1.16.5</span> 3.5 Gestion des erreurs et
+logs</a></li>
+<li><a href="#configuration-environnements-variables-secrets"
+id="toc-configuration-environnements-variables-secrets"><span
+class="toc-section-number">1.16.6</span> 3.6 Configuration
+(environnements, variables, secrets)</a></li>
+<li><a href="#sécurité-bonnes-pratiques-implémentées"
+id="toc-sécurité-bonnes-pratiques-implémentées"><span
+class="toc-section-number">1.16.7</span> 3.7 Sécurité (bonnes pratiques
+implémentées)</a></li>
+<li><a href="#api-principes-conventions-versioning"
+id="toc-api-principes-conventions-versioning"><span
+class="toc-section-number">1.16.8</span> 3.8 API : principes,
+conventions, versioning</a></li>
+</ul></li>
+<li><a href="#frontend-dossier-frontend"
+id="toc-frontend-dossier-frontend"><span
+class="toc-section-number">1.17</span> 4. Frontend (dossier
+<code>frontend/</code>)</a>
+<ul>
+<li><a href="#stack-technique-1" id="toc-stack-technique-1"><span
+class="toc-section-number">1.17.1</span> 4.1 Stack technique</a></li>
+<li><a href="#architecture-des-composants-1"
+id="toc-architecture-des-composants-1"><span
+class="toc-section-number">1.17.2</span> 4.2 Architecture des
+composants</a></li>
+<li><a href="#gestion-des-états-et-formulaires"
+id="toc-gestion-des-états-et-formulaires"><span
+class="toc-section-number">1.17.3</span> 4.3 Gestion des états et
+formulaires</a></li>
+<li><a href="#communication-avec-le-backend-1"
+id="toc-communication-avec-le-backend-1"><span
+class="toc-section-number">1.17.4</span> 4.4 Communication avec le
+Backend</a></li>
+<li><a href="#sécurité-côté-frontend"
+id="toc-sécurité-côté-frontend"><span
+class="toc-section-number">1.17.5</span> 4.5 Sécurité côté
+Frontend</a></li>
+</ul></li>
+<li><a href="#installation-et-démarrage"
+id="toc-installation-et-démarrage"><span
+class="toc-section-number">1.18</span> 5. Installation et démarrage</a>
+<ul>
+<li><a href="#prérequis" id="toc-prérequis"><span
+class="toc-section-number">1.18.1</span> 5.1 Prérequis</a></li>
+<li><a href="#installation-backend" id="toc-installation-backend"><span
+class="toc-section-number">1.18.2</span> 5.2 Installation
+Backend</a></li>
+<li><a href="#installation-frontend"
+id="toc-installation-frontend"><span
+class="toc-section-number">1.18.3</span> 5.3 Installation
+Frontend</a></li>
+<li><a href="#lancement-en-local" id="toc-lancement-en-local"><span
+class="toc-section-number">1.18.4</span> 5.4 Lancement en local</a></li>
+<li><a href="#variables-denvironnement-1"
+id="toc-variables-denvironnement-1"><span
+class="toc-section-number">1.18.5</span> 5.5 Variables
+d’environnement</a></li>
+</ul></li>
+<li><a href="#bonnes-pratiques-et-conventions"
+id="toc-bonnes-pratiques-et-conventions"><span
+class="toc-section-number">1.19</span> 6. Bonnes pratiques et
+conventions</a>
+<ul>
+<li><a href="#nommage-structure" id="toc-nommage-structure"><span
+class="toc-section-number">1.19.1</span> 6.1 Nommage &amp;
+structure</a></li>
+<li><a href="#tests" id="toc-tests"><span
+class="toc-section-number">1.19.2</span> 6.2 Tests</a></li>
+<li><a href="#linting-formatage" id="toc-linting-formatage"><span
+class="toc-section-number">1.19.3</span> 6.3 Linting /
+formatage</a></li>
+</ul></li>
+<li><a href="#déploiement" id="toc-déploiement"><span
+class="toc-section-number">1.20</span> 7. Déploiement</a>
+<ul>
+<li><a href="#stratégie" id="toc-stratégie"><span
+class="toc-section-number">1.20.1</span> 7.1 Stratégie</a></li>
+<li><a href="#environnements-1" id="toc-environnements-1"><span
+class="toc-section-number">1.20.2</span> 7.2 Environnements</a></li>
+<li><a href="#points-de-vigilance" id="toc-points-de-vigilance"><span
+class="toc-section-number">1.20.3</span> 7.3 Points de
+vigilance</a></li>
+</ul></li>
+<li><a href="#maintenance-et-évolutivité"
+id="toc-maintenance-et-évolutivité"><span
+class="toc-section-number">1.21</span> 8. Maintenance et évolutivité</a>
+<ul>
+<li><a href="#points-clés-pour-la-maintenance"
+id="toc-points-clés-pour-la-maintenance"><span
+class="toc-section-number">1.21.1</span> 8.1 Points clés pour la
+maintenance</a></li>
+<li><a href="#axes-damélioration-possibles-basés-sur-constats-code"
+id="toc-axes-damélioration-possibles-basés-sur-constats-code"><span
+class="toc-section-number">1.21.2</span> 8.2 Axes d’amélioration
+possibles (basés sur constats code)</a></li>
+<li><a href="#scalabilité" id="toc-scalabilité"><span
+class="toc-section-number">1.21.3</span> 8.3 Scalabilité</a></li>
+</ul></li>
+<li><a href="#annexes-1" id="toc-annexes-1"><span
+class="toc-section-number">1.22</span> Annexes</a>
+<ul>
+<li><a href="#a.-références-internes"
+id="toc-a.-références-internes"><span
+class="toc-section-number">1.22.1</span> A. Références internes</a></li>
+<li><a href="#b.-export-du-document-html-docx-pdf"
+id="toc-b.-export-du-document-html-docx-pdf"><span
+class="toc-section-number">1.22.2</span> B. Export du document (HTML /
+DOCX / PDF)</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 data-number="1"
+id="xzone-document-darchitecture-technique-dat"><span
+class="header-section-number">1</span> X‑Zone — Document d’Architecture
+Technique (DAT)</h1>
+<p>Date : 25 janvier 2026<br />
+Version du document : 1.0.0 (référence : <code>info.version</code> dans
+<code>Backend/xzone-openapi.yaml</code>)<br />
+Auteur : Non spécifié dans le dépôt (document produit par analyse
+statique du code)<br />
+Équipe projet : Global Glimpse SARL (référence :
+<code>frontend/README.md</code>)<br />
+Niveau de confidentialité : À renseigner (non spécifié dans le
+dépôt)</p>
+<hr />
+<h2 data-number="1.1" id="historique-et-gestion-du-document"><span
+class="header-section-number">1.1</span> 1. Historique et gestion du
+document</h2>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 17%" />
+<col style="width: 23%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Auteur</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>25/01/2026</td>
+<td>Non spécifié (généré)</td>
+<td>Première version basée sur le dépôt (Backend + frontend).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 data-number="1.2" id="résumé-exécutif"><span
+class="header-section-number">1.2</span> 2. Résumé exécutif</h2>
+<h3 data-number="1.2.1" id="contexte-du-projet"><span
+class="header-section-number">1.2.1</span> 2.1 Contexte du projet</h3>
+<p>Le dépôt contient une solution applicative structurée en deux
+ensembles :</p>
+<ul>
+<li><code>Backend/</code> : application <strong>Laravel 12</strong>
+incluant à la fois une <strong>UI backoffice</strong> via
+<strong>Inertia + React</strong> (sources dans
+<code>Backend/resources/js</code>) et une <strong>API HTTP</strong>
+(routes dans <code>Backend/routes/api.php</code>).</li>
+<li><code>frontend/</code> : application <strong>React + Vite</strong>
+(SPA avec React Router) consommant l’API via <code>/api</code> et
+accédant aux médias via <code>/storage</code>.</li>
+</ul>
+<h3 data-number="1.2.2"
+id="objectifs-métiers-observables-dans-les-routes-modèles-migrations"><span
+class="header-section-number">1.2.2</span> 2.2 Objectifs métiers
+(observables dans les routes, modèles, migrations)</h3>
+<ul>
+<li>Exposer un <strong>catalogue produits</strong> (produits,
+catégories, documents, avis, promotions, blog).</li>
+<li>Couvrir un <strong>cycle de vente</strong> (devis, commandes,
+factures) et des fonctions backoffice (stocks, finance, RH,
+helpdesk).</li>
+<li>Supporter une <strong>vente web</strong> (checkout “Cash On
+Delivery”, suivi de commande public).</li>
+<li>Proposer un <strong>portail client</strong> (auth token via Sanctum,
+endpoints
+profil/devis/factures/commandes/tickets/documents/configurateur).</li>
+</ul>
+<h3 data-number="1.2.3" id="enjeux-techniques"><span
+class="header-section-number">1.2.3</span> 2.3 Enjeux techniques</h3>
+<ul>
+<li>Séparer les responsabilités entre backoffice (Inertia) et site
+public (SPA).</li>
+<li>Définir des conventions API (public vs client vs v1 backoffice), et
+appliquer des protections (throttling, auth, RBAC).</li>
+<li>Garantir l’intégrité des opérations métiers via transactions et
+validation.</li>
+<li>Industrialiser le déploiement via scripts et procédures
+documentées.</li>
+</ul>
+<h3 data-number="1.2.4"
+id="contraintes-identifiées-issues-du-code-et-des-docs"><span
+class="header-section-number">1.2.4</span> 2.4 Contraintes identifiées
+(issues du code et des docs)</h3>
+<ul>
+<li>Auth API portail client : implémentée côté backend (Sanctum). La SPA
+<code>frontend/</code> ne montre pas, dans les fichiers inspectés, de
+gestion du token (stockage et injection
+<code>Authorization: Bearer</code>).</li>
+<li>Clé IA : <code>frontend/vite.config.ts</code> injecte
+<code>GEMINI_API_KEY</code> au code frontend via <code>define</code>, ce
+qui rend la clé accessible côté client.</li>
+<li>Durcissement CSP : le middleware
+<code>Backend/app/Http/Middleware/SecurityHeaders.php</code> indique
+éviter une CSP pour ne pas casser l’UI Inertia.</li>
+<li>Dans cette copie de workspace, <code>Backend/config/</code> ne
+contient que <code>web_orders.php</code> (les configs Laravel standards
+ne sont pas visibles ici). Les constats “configuration” s’appuient donc
+sur <code>Backend/.env.example</code>, <code>Backend/phpunit.xml</code>
+et <code>Backend/docs/*</code>.</li>
+</ul>
+<h3 data-number="1.2.5" id="bénéfices-de-larchitecture-retenue"><span
+class="header-section-number">1.2.5</span> 2.5 Bénéfices de
+l’architecture retenue</h3>
+<ul>
+<li>Architecture éprouvée (Laravel MVC, Eloquent, Inertia) pour le
+backoffice.</li>
+<li>API structurée par usages (public / portail client / v1 backoffice)
+et documentée (OpenAPI + <code>Backend/docs/api-v1.md</code>).</li>
+<li>Mesures de protection déjà présentes : rate limiting, RBAC, headers,
+validation, transactions.</li>
+</ul>
+<hr />
+<h2 data-number="1.3" id="présentation-générale-de-lapplication"><span
+class="header-section-number">1.3</span> 3. Présentation générale de
+l’application</h2>
+<h3 data-number="1.3.1" id="finalité-de-lapplication"><span
+class="header-section-number">1.3.1</span> 3.1 Finalité de
+l’application</h3>
+<p>Fournir une plateforme X‑Zone couvrant :</p>
+<ul>
+<li>un site public (présentation + catalogue + parcours commande +
+suivi),</li>
+<li>un backoffice d’administration/gestion,</li>
+<li>une API supportant les interactions des différents canaux,</li>
+<li>un portail client (API token).</li>
+</ul>
+<h3 data-number="1.3.2"
+id="périmètre-fonctionnel-dérivé-de-backendroutes-et-backenddatabasemigrations"><span
+class="header-section-number">1.3.2</span> 3.2 Périmètre fonctionnel
+(dérivé de <code>Backend/routes/*</code> et
+<code>Backend/database/migrations/*</code>)</h3>
+<ul>
+<li>Catalogue : produits, catégories, attributs, images, variantes,
+compatibilités, documents.</li>
+<li>Ventes : clients, devis, factures, commandes,
+statuts/historiques.</li>
+<li>Commandes web : tables dédiées <code>web_orders*</code>, endpoint
+public <code>/api/orders</code>.</li>
+<li>Contenu : blog/actualités.</li>
+<li>Promotions.</li>
+<li>Stocks : mouvements, raisons, pièces jointes.</li>
+<li>Finance : transactions, catégories, rappels.</li>
+<li>RH / congés.</li>
+<li>Helpdesk/tickets.</li>
+<li>Logs/audit : activity log + login logs.</li>
+</ul>
+<h3 data-number="1.3.3" id="hors-périmètre"><span
+class="header-section-number">1.3.3</span> 3.3 Hors périmètre</h3>
+<p>Non explicitement défini dans le dépôt. Les éléments suivants ne sont
+pas présents en tant que composants identifiables/industrialisés dans le
+code :</p>
+<ul>
+<li>Supervision/monitoring (agents, dashboards, alerting) : non
+trouvé.</li>
+<li>Backups et plan de restauration : non trouvé.</li>
+<li>Pipeline CI/CD : non trouvé.</li>
+</ul>
+<h3 data-number="1.3.4"
+id="typologie-des-utilisateurs-observée-via-rbac-routes-et-api"><span
+class="header-section-number">1.3.4</span> 3.4 Typologie des
+utilisateurs (observée via RBAC, routes et API)</h3>
+<ul>
+<li>Utilisateurs backoffice authentifiés + email vérifié
+(<code>auth</code> + <code>verified</code> sur routes web).</li>
+<li>Rôles/permissions : gestion via Spatie Permission (middleware
+<code>permission:*</code> sur routes web). Bypass
+<code>SuperAdmin</code> via <code>Gate::before</code>.</li>
+<li>Clients portail : utilisateurs avec flag <code>portal_client</code>
+(middleware <code>portal_client</code>), auth Sanctum token.</li>
+<li>Public : consultation catalogue/blog, soumission avis, création
+commande web, suivi commande.</li>
+</ul>
+<h3 data-number="1.3.5" id="environnements-cibles"><span
+class="header-section-number">1.3.5</span> 3.5 Environnements
+cibles</h3>
+<ul>
+<li>Développement local : <code>.env</code> conforme à
+<code>Backend/.env.example</code> ; proxy Vite pour le frontend
+(<code>frontend/.env.example</code>).</li>
+<li>Test : <code>Backend/phpunit.xml</code> fixe
+<code>APP_ENV=testing</code> + sqlite in-memory.</li>
+<li>Recette : non explicitement définie dans le dépôt.</li>
+<li>Production : procédure dans
+<code>Backend/docs/production.md</code>.</li>
+</ul>
+<hr />
+<h2 data-number="1.4" id="architecture-globale"><span
+class="header-section-number">1.4</span> 4. Architecture globale</h2>
+<h3 data-number="1.4.1" id="vue-densemble-frontend-backend"><span
+class="header-section-number">1.4.1</span> 4.1 Vue d’ensemble Frontend /
+Backend</h3>
+<p>Le dépôt implémente deux applications frontend distinctes :</p>
+<ol type="1">
+<li>Backoffice : UI Inertia/React servie par <code>Backend/</code>
+(rendu via routes web Laravel).</li>
+<li>Site public : SPA React dans <code>frontend/</code>.</li>
+</ol>
+<p>Les deux consomment (directement ou indirectement) les services du
+backend : DB, storage, queue, mail.</p>
+<h3 data-number="1.4.2" id="principe-de-séparation-des-couches"><span
+class="header-section-number">1.4.2</span> 4.2 Principe de séparation
+des couches</h3>
+<ul>
+<li>Couche Présentation (Backend) : contrôleurs HTTP, middlewares,
+validation (FormRequest), ressources JSON.</li>
+<li>Couche Métier : <code>Backend/app/Services</code>,
+<code>Backend/app/Actions</code>, <code>Backend/app/Domain</code>.</li>
+<li>Couche Accès aux données : modèles Eloquent, relations, scopes,
+migrations.</li>
+</ul>
+<h3 data-number="1.4.3" id="protocoles-et-formats-déchange"><span
+class="header-section-number">1.4.3</span> 4.3 Protocoles et formats
+d’échange</h3>
+<ul>
+<li>HTTP/HTTPS.</li>
+<li>JSON pour l’API (<code>Accept: application/json</code> côté client
+<code>frontend/utils/apiClient.ts</code>).</li>
+<li>Inertia (JSON + navigation côté client) pour le backoffice.</li>
+<li>Stockage fichiers : exposition via <code>/storage/*</code> (symlink
+<code>public/storage</code>).</li>
+</ul>
+<h3 data-number="1.4.4"
+id="schéma-logique-des-flux-applicatifs-description-textuelle"><span
+class="header-section-number">1.4.4</span> 4.4 Schéma logique des flux
+applicatifs (description textuelle)</h3>
+<p>Flux “site public” (SPA) :</p>
+<ol type="1">
+<li>Le navigateur charge la SPA <code>frontend/</code>.</li>
+<li>La SPA appelle <code>/api/...</code> (via <code>fetch</code> et base
+URL <code>VITE_API_BASE_URL</code>, par défaut <code>/api</code>).</li>
+<li>En dev, Vite proxifie <code>/api</code> et <code>/storage</code>
+vers <code>VITE_API_PROXY_TARGET</code> (Laravel).</li>
+<li>Laravel traite la requête (routes, middlewares, validation,
+contrôleur), interagit avec la DB et/ou le storage.</li>
+<li>Laravel renvoie JSON ; la SPA gère loading/erreurs et rend les
+vues.</li>
+</ol>
+<p>Flux “backoffice” (Inertia) :</p>
+<ol type="1">
+<li>Le navigateur accède aux routes web Laravel.</li>
+<li>Middlewares web (dont <code>EnsureAppIsConfigured</code>,
+<code>HandleInertiaRequests</code>, <code>SecurityHeaders</code>)
+exécutent.</li>
+<li>Le contrôleur renvoie une réponse Inertia ; la UI React
+<code>Backend/resources/js</code> rend les pages.</li>
+<li>Les rôles/permissions et paramètres partagés sont injectés via
+<code>HandleInertiaRequests</code>.</li>
+</ol>
+<h3 data-number="1.4.5" id="principes-darchitecture-retenus"><span
+class="header-section-number">1.4.5</span> 4.5 Principes d’architecture
+retenus</h3>
+<ul>
+<li>Backend : architecture <strong>Laravel MVC</strong> (contrôleurs,
+modèles, requests, resources), enrichie par des services/actions.</li>
+<li>UI backoffice : pattern <strong>Inertia</strong> (rendu SPA piloté
+par le serveur, pages React).</li>
+<li>API : segmentation par contexte (public / client / v1 backoffice) +
+documentation (OpenAPI + doc dédiée v1).</li>
+</ul>
+<hr />
+<h2 data-number="1.5" id="architecture-backend-détaillée"><span
+class="header-section-number">1.5</span> 5. Architecture Backend
+(détaillée)</h2>
+<h3 data-number="1.5.1"
+id="stack-technique-complète-référence-backendcomposer.json"><span
+class="header-section-number">1.5.1</span> 5.1 Stack technique complète
+(référence <code>Backend/composer.json</code>)</h3>
+<ul>
+<li>PHP <code>^8.2</code>.</li>
+<li>Laravel <code>^12.0</code>.</li>
+<li>ORM : Eloquent.</li>
+<li>Auth API : Laravel Sanctum.</li>
+<li>RBAC : Spatie Permission.</li>
+<li>Audit : Spatie Activity Log.</li>
+<li>PDF : <code>barryvdh/laravel-dompdf</code>.</li>
+<li>Exports : <code>maatwebsite/excel</code>.</li>
+<li>Images : <code>intervention/image</code>.</li>
+</ul>
+<h3 data-number="1.5.2"
+id="organisation-des-dossiers-structure-observée"><span
+class="header-section-number">1.5.2</span> 5.2 Organisation des dossiers
+(structure observée)</h3>
+<ul>
+<li><code>Backend/app/Http/Controllers/</code> : contrôleurs web et
+API.</li>
+<li><code>Backend/app/Http/Controllers/Api/</code> : API publique.</li>
+<li><code>Backend/app/Http/Controllers/Api/Client/</code> : API portail
+client.</li>
+<li><code>Backend/app/Http/Controllers/Api/V1/</code> : API v1
+backoffice.</li>
+<li><code>Backend/app/Http/Middleware/</code> : middlewares (onboarding,
+sécurité headers, Inertia, portail client).</li>
+<li><code>Backend/app/Models/</code> : modèles (relations, scopes,
+casts, soft deletes, audit).</li>
+<li><code>Backend/app/Services/</code> : services métiers (ex : congés,
+promotions, compatibilités).</li>
+<li><code>Backend/app/Actions/</code> : actions unitaires (ex :
+conversion devis → facture).</li>
+<li><code>Backend/database/migrations/</code> : schéma DB.</li>
+<li><code>Backend/resources/js/</code> : UI backoffice (Inertia + React)
++ SSR.</li>
+</ul>
+<h3 data-number="1.5.3" id="description-des-couches"><span
+class="header-section-number">1.5.3</span> 5.3 Description des
+couches</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Responsabilités</th>
+<th>Exemples d’artefacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Présentation</td>
+<td>Routage, middlewares, validation, sérialisation, statuts HTTP</td>
+<td><code>routes/api.php</code>, <code>routes/web.php</code>,
+<code>app/Http/Middleware/*</code>, <code>app/Http/Requests/*</code>,
+<code>app/Http/Resources/*</code>, contrôleurs</td>
+</tr>
+<tr>
+<td>Métier</td>
+<td>Règles et cas d’usage, orchestration, intégrité</td>
+<td><code>app/Services/*</code>, <code>app/Actions/*</code>,
+<code>app/Domain/*</code></td>
+</tr>
+<tr>
+<td>Accès aux données</td>
+<td>Modèles, relations, requêtes, migrations</td>
+<td><code>app/Models/*</code>, <code>database/migrations/*</code></td>
+</tr>
+</tbody>
+</table>
+<h3 data-number="1.5.4"
+id="flux-dexécution-dune-requête-exemple-création-commande-web"><span
+class="header-section-number">1.5.4</span> 5.4 Flux d’exécution d’une
+requête (exemple “création commande web”)</h3>
+<p>Endpoint : <code>POST /api/orders</code> (route dans
+<code>Backend/routes/api.php</code>, contrôleur
+<code>Backend/app/Http/Controllers/Api/WebOrderController.php</code>).</p>
+<p>Chaîne d’exécution :</p>
+<ol type="1">
+<li>Router Laravel → contrôleur.</li>
+<li>Validation via <code>StoreWebOrderRequest</code>
+(<code>$request-&gt;validated()</code>).</li>
+<li>Chargement des produits + règles (refus des produits “prix sur
+devis”).</li>
+<li>Transaction <code>DB::transaction</code> : création
+<code>WebOrder</code> + <code>WebOrderItem</code>, calcul HT/TVA/TTC,
+snapshot des champs produit.</li>
+<li>Envoi emails en “best effort” (try/catch) ; log warning si
+échec.</li>
+<li>Réponse JSON : <code>{ success: true, order: {...} }</code>.</li>
+</ol>
+<h3 data-number="1.5.5" id="gestion-des-transactions"><span
+class="header-section-number">1.5.5</span> 5.5 Gestion des
+transactions</h3>
+<p>L’usage de <code>DB::transaction</code> est présent dans plusieurs
+flux critiques, notamment :</p>
+<ul>
+<li>commandes web (API),</li>
+<li>changements de statuts (backoffice),</li>
+<li>tickets, catégories/attributs,</li>
+<li>promotions / devis / factures,</li>
+<li>congés (services Leave).</li>
+</ul>
+<p>Objectif : garantir l’atomicité des écritures multi-tables et
+maintenir la cohérence des agrégats (totaux, historiques, pivots).</p>
+<h3 data-number="1.5.6" id="accès-aux-données-et-orm"><span
+class="header-section-number">1.5.6</span> 5.6 Accès aux données et
+ORM</h3>
+<ul>
+<li>Eloquent Models avec :
+<ul>
+<li><code>SoftDeletes</code> (ex : <code>Product</code>).</li>
+<li><code>HasUuids</code> sur certaines entités (ex :
+<code>Product</code>).</li>
+<li>relations <code>belongsTo</code>, <code>hasMany</code>,
+<code>belongsToMany</code>.</li>
+<li>scopes (ex : <code>Product::visible()</code>) pour centraliser les
+règles de visibilité.</li>
+</ul></li>
+<li>Schéma DB maintenu via migrations (source de vérité).</li>
+</ul>
+<h3 data-number="1.5.7" id="gestion-des-erreurs"><span
+class="header-section-number">1.5.7</span> 5.7 Gestion des erreurs</h3>
+<ul>
+<li>Gestion des 404 de modèles : <code>ModelNotFoundException</code>
+rendu en JSON (dans <code>Backend/bootstrap/app.php</code>) lorsque la
+requête attend du JSON ou cible <code>api/*</code>.</li>
+<li>Gestion d’erreurs applicatives via statuts HTTP explicites sur
+certains endpoints :
+<ul>
+<li>401/403 pour login portail client,</li>
+<li>404 pour suivi commande introuvable,</li>
+<li>422 pour erreurs de validation ou contraintes métier (ex : produit
+introuvable / sur devis dans commande web).</li>
+</ul></li>
+</ul>
+<h3 data-number="1.5.8" id="journalisation-logs"><span
+class="header-section-number">1.5.8</span> 5.8 Journalisation
+(logs)</h3>
+<ul>
+<li>Logs techniques/applicatifs : utilisation de
+<code>Log::info|warning|error</code> dans plusieurs contrôleurs/services
+(ex : promotions, catégories, commandes web).</li>
+<li>Logs d’activité (audit) : <code>spatie/laravel-activitylog</code>
+activé sur des modèles (ex : <code>User</code>,
+<code>Product</code>).</li>
+<li>Logs de connexion : listeners <code>LogSuccessfulLogin</code> /
+<code>LogFailedLogin</code> alimentant la table de login logs.</li>
+</ul>
+<blockquote>
+<p><strong>Bonnes pratiques (implémentées)</strong></p>
+<ul>
+<li>“Best effort” sur l’emailing commande web : la commande n’est pas
+rollback si l’envoi mail échoue, l’échec est journalisé.</li>
+<li>Ajout de rate limiting nommé centralisé
+(cf. <code>AppServiceProvider</code>).</li>
+</ul>
+</blockquote>
+<h3 data-number="1.5.9" id="sécurité-backend"><span
+class="header-section-number">1.5.9</span> 5.9 Sécurité Backend</h3>
+<h4 data-number="1.5.9.1" id="authentification"><span
+class="header-section-number">1.5.9.1</span> 5.9.1 Authentification</h4>
+<ul>
+<li>Backoffice (web) : routes d’auth standard
+(<code>Backend/routes/auth.php</code>) + middleware <code>auth</code> et
+<code>verified</code> sur <code>Backend/routes/web.php</code>.</li>
+<li>Portail client (API) : login <code>POST /api/client/login</code>,
+génération token Sanctum <code>createToken('client-portal')</code>.</li>
+<li>API v1 backoffice : <code>auth:sanctum</code>.</li>
+</ul>
+<h4 data-number="1.5.9.2" id="autorisations"><span
+class="header-section-number">1.5.9.2</span> 5.9.2 Autorisations</h4>
+<ul>
+<li>RBAC : Spatie Permission.
+<ul>
+<li>Sur web : middleware <code>permission:*</code>.</li>
+<li>Sur API v1 : middleware <code>role:Admin|SuperAdmin</code>.</li>
+</ul></li>
+<li>Bypass <code>SuperAdmin</code> via <code>Gate::before</code>
+(<code>Backend/app/Providers/AuthServiceProvider.php</code>).</li>
+</ul>
+<h4 data-number="1.5.9.3" id="validation-des-entrées"><span
+class="header-section-number">1.5.9.3</span> 5.9.3 Validation des
+entrées</h4>
+<ul>
+<li>Validation Laravel via <code>FormRequest</code> (ex :
+<code>StoreWebOrderRequest</code>,
+<code>StoreProductReviewRequest</code>) et
+<code>Request::validate</code> (ex : suivi commande).</li>
+</ul>
+<h4 data-number="1.5.9.4" id="protection-des-données-sensibles"><span
+class="header-section-number">1.5.9.4</span> 5.9.4 Protection des
+données sensibles</h4>
+<ul>
+<li>Cookies “baseline” durcissement : recommandé dans
+<code>Backend/docs/security-audit-2026-01-18.md</code> (ex :
+<code>SESSION_SECURE_COOKIE=true</code> en prod).</li>
+<li>Headers de sécurité : middleware <code>SecurityHeaders</code>
+(nosniff, X-Frame-Options, HSTS si HTTPS, Permissions-Policy,
+etc.).</li>
+</ul>
+<blockquote>
+<p><strong>Points de vigilance (issus du code)</strong></p>
+<ul>
+<li>CSP non activée (choix explicite dans <code>SecurityHeaders</code>)
+: à évaluer en fonction des exigences sécurité.</li>
+</ul>
+</blockquote>
+<h3 data-number="1.5.10" id="api"><span
+class="header-section-number">1.5.10</span> 5.10 API</h3>
+<h4 data-number="1.5.10.1" id="convention-de-nommage"><span
+class="header-section-number">1.5.10.1</span> 5.10.1 Convention de
+nommage</h4>
+<ul>
+<li>Base : <code>/api</code>.</li>
+<li>Endpoints orientés ressources (produits, catégories, blog,
+etc.).</li>
+<li>Sous-espaces :
+<ul>
+<li><code>client/*</code> pour le portail,</li>
+<li><code>v1/*</code> pour l’API backoffice.</li>
+</ul></li>
+</ul>
+<h4 data-number="1.5.10.2" id="versioning"><span
+class="header-section-number">1.5.10.2</span> 5.10.2 Versioning</h4>
+<ul>
+<li>Versioning explicite : préfixe <code>/api/v1</code>.</li>
+<li>Conventions détaillées : <code>Backend/docs/api-v1.md</code>.</li>
+</ul>
+<h4 data-number="1.5.10.3" id="gestion-des-statuts-http"><span
+class="header-section-number">1.5.10.3</span> 5.10.3 Gestion des statuts
+HTTP</h4>
+<ul>
+<li>200 : réponses nominales (resources/JSON).</li>
+<li>401/403 : authentification/autorisation (ex : login portail
+client).</li>
+<li>404 : ressource introuvable (ex : suivi commande) + gestion
+centralisée <code>ModelNotFoundException</code>.</li>
+<li>422 : validation/contraintes (ex : produit introuvable dans la
+commande, produit “sur devis”).</li>
+</ul>
+<h4 data-number="1.5.10.4" id="gestion-des-erreurs-api"><span
+class="header-section-number">1.5.10.4</span> 5.10.4 Gestion des erreurs
+API</h4>
+<ul>
+<li>Format minimal récurrent :
+<code>{ success: false, message: string }</code>.</li>
+<li>404 “modèle introuvable” uniformisé pour <code>api/*</code>.</li>
+<li>OpenAPI : <code>Backend/xzone-openapi.yaml</code> décrit
+<code>ErrorResponse</code>.</li>
+</ul>
+<hr />
+<h2 data-number="1.6"
+id="architecture-frontend-détaillée-dossier-frontend"><span
+class="header-section-number">1.6</span> 6. Architecture Frontend
+(détaillée) — dossier <code>frontend/</code></h2>
+<h3 data-number="1.6.1"
+id="stack-technique-référence-frontendpackage.json"><span
+class="header-section-number">1.6.1</span> 6.1 Stack technique
+(référence <code>frontend/package.json</code>)</h3>
+<ul>
+<li>React 19.</li>
+<li>TypeScript.</li>
+<li>Vite.</li>
+<li>React Router.</li>
+<li>PDF : <code>jspdf</code>, <code>jspdf-autotable</code>.</li>
+<li>IA : <code>@google/genai</code>.</li>
+<li>Icons : <code>lucide-react</code>.</li>
+</ul>
+<h3 data-number="1.6.2" id="organisation-globale-du-code"><span
+class="header-section-number">1.6.2</span> 6.2 Organisation globale du
+code</h3>
+<ul>
+<li><code>frontend/index.tsx</code> : bootstrap React + providers.</li>
+<li><code>frontend/App.tsx</code> : routing, lazy loading, layout.</li>
+<li><code>frontend/pages/</code> : pages (Home, Shop, ProductDetail,
+Checkout, OrderTracking, etc.).</li>
+<li><code>frontend/components/</code> : composants UI.</li>
+<li><code>frontend/contexts/</code> : state global (chat, panier,
+langue).</li>
+<li><code>frontend/utils/</code> : clients API, mappers, préfetching,
+génération PDF.</li>
+</ul>
+<h3 data-number="1.6.3" id="architecture-des-composants"><span
+class="header-section-number">1.6.3</span> 6.3 Architecture des
+composants</h3>
+<ul>
+<li>Découpage par pages ; chargement différé via <code>React.lazy</code>
+et <code>Suspense</code>.</li>
+<li>Un layout conditionnel désactive header/footer sur la zone
+<code>/client-area/*</code>.</li>
+</ul>
+<h3 data-number="1.6.4" id="gestion-de-létat"><span
+class="header-section-number">1.6.4</span> 6.4 Gestion de l’état</h3>
+<ul>
+<li>Context API :
+<ul>
+<li><code>CartContext</code> persiste le panier en
+<code>localStorage</code>.</li>
+<li><code>ChatContext</code> stocke l’état d’ouverture et un
+“diagnosticContext”.</li>
+</ul></li>
+</ul>
+<h3 data-number="1.6.5" id="routing"><span
+class="header-section-number">1.6.5</span> 6.5 Routing</h3>
+<ul>
+<li><code>BrowserRouter</code>.</li>
+<li>Routes principales :
+<ul>
+<li>catalogue : <code>/shop</code>, <code>/produits</code>, détail
+<code>/produits/:id</code> et <code>/product/:id</code>,</li>
+<li>panier/checkout : <code>/cart</code>, <code>/checkout</code>,</li>
+<li>commande : <code>/order-success/:orderNumber</code>,
+<code>/order-tracking</code>,</li>
+<li>contenu : <code>/blog</code>, <code>/blog/:slug</code>,</li>
+<li>“client area” : <code>/client-area/*</code>.</li>
+</ul></li>
+</ul>
+<h3 data-number="1.6.6" id="communication-avec-le-backend"><span
+class="header-section-number">1.6.6</span> 6.6 Communication avec le
+Backend</h3>
+<ul>
+<li>Client HTTP : <code>frontend/utils/apiClient.ts</code> (wrapper
+<code>fetch</code>).
+<ul>
+<li>Base URL : <code>VITE_API_BASE_URL</code> (par défaut
+<code>/api</code>).</li>
+<li>Erreurs : exception <code>ApiError</code> avec <code>status</code>,
+<code>url</code>, <code>body</code>.</li>
+</ul></li>
+<li>API catalogue : <code>frontend/utils/apiCatalog.ts</code> (produits,
+recherche, catégories, avis).</li>
+<li>API commandes : <code>frontend/utils/apiOrders.ts</code> (création
+commande + tracking).</li>
+</ul>
+<h3 data-number="1.6.7"
+id="gestion-des-erreurs-et-des-chargements"><span
+class="header-section-number">1.6.7</span> 6.7 Gestion des erreurs et
+des chargements</h3>
+<ul>
+<li>Pages gèrent explicitement :
+<ul>
+<li>états <code>isLoading</code>/<code>isSubmitting</code>,</li>
+<li>affichage d’erreurs via message utilisateur,</li>
+<li>fallbacks UI via <code>Suspense</code>.</li>
+</ul></li>
+</ul>
+<h3 data-number="1.6.8" id="sécurité-frontend"><span
+class="header-section-number">1.6.8</span> 6.8 Sécurité Frontend</h3>
+<ul>
+<li>Persistance : seul le panier est persistant
+(<code>localStorage</code>).</li>
+<li>Auth portail client : non observée dans les fichiers analysés
+(absence d’injection systématique <code>Authorization: Bearer</code>
+dans <code>apiClient</code>).</li>
+<li>IA : <code>frontend/vite.config.ts</code> injecte
+<code>GEMINI_API_KEY</code> au code client.</li>
+</ul>
+<blockquote>
+<p><strong>Point de vigilance (issu du code)</strong></p>
+<ul>
+<li>Une clé injectée au frontend doit être considérée comme exposée
+(risque de fuite/abus). Si le besoin est une clé secrète, le proxy doit
+être côté serveur.</li>
+</ul>
+</blockquote>
+<h3 data-number="1.6.9" id="performance-et-bonnes-pratiques"><span
+class="header-section-number">1.6.9</span> 6.9 Performance et bonnes
+pratiques</h3>
+<ul>
+<li>Code splitting : lazy routes.</li>
+<li>Optimisation build : <code>frontend/vite.config.ts</code> définit
+<code>manualChunks</code> (react/ai/pdf/icons).</li>
+<li>Préfetching de routes : logique dédiée (ex :
+<code>prefetchCriticalRoutesOnIdle</code>).</li>
+</ul>
+<hr />
+<h2 data-number="1.7" id="configuration-et-environnements"><span
+class="header-section-number">1.7</span> 7. Configuration et
+environnements</h2>
+<h3 data-number="1.7.1" id="variables-denvironnement"><span
+class="header-section-number">1.7.1</span> 7.1 Variables
+d’environnement</h3>
+<p>Backend : <code>Backend/.env.example</code> (extraits
+structurants)</p>
+<ul>
+<li>Applicatif : <code>APP_ENV</code>, <code>APP_DEBUG</code>,
+<code>APP_URL</code>, <code>APP_LOCALE</code>.</li>
+<li>Logs : <code>LOG_CHANNEL</code>, <code>LOG_LEVEL</code>.</li>
+<li>DB : <code>DB_CONNECTION</code> (sqlite par défaut dans
+l’exemple).</li>
+<li>Session/cache/queue : <code>SESSION_DRIVER</code>,
+<code>CACHE_STORE</code>, <code>QUEUE_CONNECTION</code>.</li>
+</ul>
+<p>Frontend : <code>frontend/.env.example</code></p>
+<ul>
+<li><code>VITE_API_BASE_URL</code> (par défaut <code>/api</code>).</li>
+<li><code>VITE_API_PROXY_TARGET</code> (cible proxy dev pour
+<code>/api</code> et <code>/storage</code>).</li>
+</ul>
+<h3 data-number="1.7.2"
+id="séparation-dev-test-recette-production"><span
+class="header-section-number">1.7.2</span> 7.2 Séparation dev / test /
+recette / production</h3>
+<ul>
+<li>Dev : <code>.env</code> basé sur <code>.env.example</code>.</li>
+<li>Test : <code>Backend/phpunit.xml</code> impose
+<code>APP_ENV=testing</code>, sqlite in-memory, queue sync, session
+array.</li>
+<li>Recette : non défini dans le dépôt.</li>
+<li>Prod : <code>Backend/docs/production.md</code> décrit prérequis,
+caches, migrations <code>--force</code>, permissions storage.</li>
+</ul>
+<h3 data-number="1.7.3" id="paramètres-critiques"><span
+class="header-section-number">1.7.3</span> 7.3 Paramètres critiques</h3>
+<ul>
+<li><code>APP_KEY</code> (obligatoire).</li>
+<li><code>APP_DEBUG=false</code> en production.</li>
+<li><code>APP_URL</code> correct (génération URLs et liens).</li>
+<li>DB : <code>DB_*</code>.</li>
+<li>Mail : requis si emailing opérationnel attendu (sinon mailer log
+possible).</li>
+</ul>
+<h3 data-number="1.7.4" id="gestion-des-secrets"><span
+class="header-section-number">1.7.4</span> 7.4 Gestion des secrets</h3>
+<p>Le dépôt ne contient pas de mécanisme de coffre-fort (Vault/KMS) ni
+de politique de rotation. Les secrets sont attendus via variables
+d’environnement (<code>.env</code>) conformément aux pratiques
+Laravel.</p>
+<hr />
+<h2 data-number="1.8" id="installation-et-mise-en-service"><span
+class="header-section-number">1.8</span> 8. Installation et mise en
+service</h2>
+<h3 data-number="1.8.1" id="prérequis-techniques"><span
+class="header-section-number">1.8.1</span> 8.1 Prérequis techniques</h3>
+<ul>
+<li>PHP &gt;= 8.2 (recommandé 8.3 selon
+<code>Backend/docs/production.md</code>).</li>
+<li>Composer.</li>
+<li>Node.js &gt;= 18.18 (contrainte dans
+<code>Backend/package.json</code>).</li>
+<li>SGBD : sqlite (dev) ou autre (prod) selon configuration.</li>
+</ul>
+<h3 data-number="1.8.2" id="procédure-dinstallation-backend"><span
+class="header-section-number">1.8.2</span> 8.2 Procédure d’installation
+Backend</h3>
+<p>Depuis <code>Backend/</code> :</p>
+<ol type="1">
+<li><code>composer install</code></li>
+<li><code>copy .env.example .env</code> puis renseigner
+<code>APP_KEY</code> via <code>php artisan key:generate</code>.</li>
+<li><code>php artisan migrate</code></li>
+<li><code>npm install</code></li>
+</ol>
+<h3 data-number="1.8.3" id="procédure-dinstallation-frontend"><span
+class="header-section-number">1.8.3</span> 8.3 Procédure d’installation
+Frontend</h3>
+<p>Depuis <code>frontend/</code> :</p>
+<ol type="1">
+<li><code>npm install</code></li>
+<li>Copier <code>.env.example</code> vers <code>.env.local</code> (ou
+équivalent) et ajuster <code>VITE_API_PROXY_TARGET</code>.</li>
+</ol>
+<h3 data-number="1.8.4" id="lancement-de-lapplication"><span
+class="header-section-number">1.8.4</span> 8.4 Lancement de
+l’application</h3>
+<ul>
+<li>Backend (dev intégré) : <code>composer run dev</code> (serve +
+queue:listen + vite).</li>
+<li>Frontend SPA : <code>npm run dev</code> (dans
+<code>frontend/</code>).</li>
+</ul>
+<h3 data-number="1.8.5" id="vérifications-postinstallation"><span
+class="header-section-number">1.8.5</span> 8.5 Vérifications
+post‑installation</h3>
+<ul>
+<li>Accès UI backoffice (route <code>/</code> redirige vers setup/login
+selon configuration).</li>
+<li>Endpoints API publics : <code>/api/products</code>,
+<code>/api/categories/tree</code>.</li>
+<li>Commande web : <code>/api/orders</code>.</li>
+<li>Suivi : <code>/api/orders/track</code>.</li>
+<li>Assets : <code>/storage/*</code> si <code>storage:link</code>.</li>
+</ul>
+<hr />
+<h2 data-number="1.9" id="déploiement-et-exploitation"><span
+class="header-section-number">1.9</span> 9. Déploiement et
+exploitation</h2>
+<h3 data-number="1.9.1" id="stratégie-de-déploiement"><span
+class="header-section-number">1.9.1</span> 9.1 Stratégie de
+déploiement</h3>
+<p>Référence : <code>Backend/docs/production.md</code> et scripts :</p>
+<ul>
+<li>PowerShell : <code>Backend/scripts/deploy-prod.ps1</code></li>
+<li>Bash : <code>Backend/scripts/deploy-prod.sh</code></li>
+</ul>
+<p>Les scripts couvrent : install dépendances, build Vite, caches
+Laravel ; options pour migrations et <code>storage:link</code> côté
+PowerShell.</p>
+<h3 data-number="1.9.2" id="environnements"><span
+class="header-section-number">1.9.2</span> 9.2 Environnements</h3>
+<ul>
+<li>Local : mode <code>local</code> des scripts.</li>
+<li>Production : mode <code>production</code> des scripts
+(<code>--no-dev</code>, <code>migrate --force</code>).</li>
+</ul>
+<h3 data-number="1.9.3" id="rollback"><span
+class="header-section-number">1.9.3</span> 9.3 Rollback</h3>
+<p>Aucune stratégie de rollback automatisée n’est fournie dans le dépôt.
+Les scripts ne couvrent pas :</p>
+<ul>
+<li>rollback de migrations,</li>
+<li>versioning d’artefacts déployés,</li>
+<li>blue/green ou canary.</li>
+</ul>
+<h3 data-number="1.9.4" id="supervision-et-monitoring"><span
+class="header-section-number">1.9.4</span> 9.4 Supervision et
+monitoring</h3>
+<p>Non implémenté/documenté dans le dépôt.</p>
+<h3 data-number="1.9.5" id="sauvegardes"><span
+class="header-section-number">1.9.5</span> 9.5 Sauvegardes</h3>
+<p>Non implémenté/documenté dans le dépôt.</p>
+<hr />
+<h2 data-number="1.10" id="sécurité-et-conformité"><span
+class="header-section-number">1.10</span> 10. Sécurité et
+conformité</h2>
+<h3 data-number="1.10.1"
+id="bonnes-pratiques-appliquées-preuves-dans-le-dépôt"><span
+class="header-section-number">1.10.1</span> 10.1 Bonnes pratiques
+appliquées (preuves dans le dépôt)</h3>
+<ul>
+<li>Audit dépendances :
+<code>Backend/docs/security-audit-2026-01-18.md</code>.</li>
+<li>Rate limiting :
+<code>Backend/app/Providers/AppServiceProvider.php</code> + throttles
+dans <code>Backend/routes/api.php</code>.</li>
+<li>Headers de sécurité :
+<code>Backend/app/Http/Middleware/SecurityHeaders.php</code>.</li>
+<li>RBAC : Spatie Permission + bypass <code>SuperAdmin</code>.</li>
+<li>Validation : FormRequests + validation inline.</li>
+</ul>
+<h3 data-number="1.10.2" id="risques-identifiés-issus-du-code"><span
+class="header-section-number">1.10.2</span> 10.2 Risques identifiés
+(issus du code)</h3>
+<ul>
+<li>Exposition potentielle de <code>GEMINI_API_KEY</code> au client
+(frontend build).</li>
+<li>CSP non activée (choix explicite).</li>
+<li>Frontend <code>frontend/</code> : absence observée d’intégration
+auth Sanctum (Bearer) alors que l’API portail client existe.</li>
+</ul>
+<h3 data-number="1.10.3"
+id="mesures-de-mitigation-orientées-mise-en-conformité-à-valider"><span
+class="header-section-number">1.10.3</span> 10.3 Mesures de mitigation
+(orientées mise en conformité, à valider)</h3>
+<ul>
+<li>Déplacer les appels IA nécessitant secret côté backend, ou utiliser
+un proxy serveur.</li>
+<li>Évaluer une politique CSP compatible Inertia (mise en place
+progressive + reporting).</li>
+<li>Clarifier l’architecture “portail client” :
+<ul>
+<li>soit consommation directe de l’API Sanctum depuis un client
+dédié,</li>
+<li>soit intégration au backoffice Inertia,</li>
+<li>soit mise en place d’un BFF.</li>
+</ul></li>
+</ul>
+<h3 data-number="1.10.4" id="conformité-réglementaire"><span
+class="header-section-number">1.10.4</span> 10.4 Conformité
+réglementaire</h3>
+<p>Non documentée dans le dépôt (RGPD, journaux légaux, conservation,
+etc.).</p>
+<hr />
+<h2 data-number="1.11" id="performance-et-scalabilité"><span
+class="header-section-number">1.11</span> 11. Performance et
+scalabilité</h2>
+<h3 data-number="1.11.1" id="points-de-charge"><span
+class="header-section-number">1.11.1</span> 11.1 Points de charge</h3>
+<ul>
+<li>Recherche produit (<code>/api/products/search</code>) identifiée
+comme coûteuse et protégée par un throttle dédié.</li>
+<li>Endpoints publics catalogue/catégories/blog protégés via
+throttling.</li>
+</ul>
+<h3 data-number="1.11.2" id="limites-identifiées"><span
+class="header-section-number">1.11.2</span> 11.2 Limites
+identifiées</h3>
+<ul>
+<li>Aucun mécanisme de cache applicatif explicite n’est décrit au niveau
+“feature” dans les fichiers analysés (en dehors des capacités Laravel
+via drivers).</li>
+</ul>
+<h3 data-number="1.11.3" id="stratégies-doptimisation-existantes"><span
+class="header-section-number">1.11.3</span> 11.3 Stratégies
+d’optimisation (existantes)</h3>
+<ul>
+<li>Rate limiting centralisé.</li>
+<li>Queue disponible (script dev lance <code>queue:listen</code>).</li>
+<li>Build optimisé : chunks Vite côté <code>frontend/</code>.</li>
+</ul>
+<h3 data-number="1.11.4" id="évolutivité"><span
+class="header-section-number">1.11.4</span> 11.4 Évolutivité</h3>
+<ul>
+<li>Variables Redis présentes dans <code>.env.example</code> (capacité
+d’évolution vers cache/queue Redis).</li>
+<li>Structuration Services/Actions facilitant l’extraction de cas
+d’usage.</li>
+</ul>
+<hr />
+<h2 data-number="1.12" id="maintenance-et-évolutions"><span
+class="header-section-number">1.12</span> 12. Maintenance et
+évolutions</h2>
+<h3 data-number="1.12.1" id="points-sensibles-du-code"><span
+class="header-section-number">1.12.1</span> 12.1 Points sensibles du
+code</h3>
+<ul>
+<li>Modèle “attributs” catalogue (approche EAV) : nécessite une
+discipline de migration/validation et une gestion de performance
+(relations et hydrations).</li>
+<li>Multiplicité de domaines (vente, stock, RH, helpdesk) : risque de
+couplage fonctionnel et complexité de tests.</li>
+<li>Synchronisation de champs snapshot (commande web) : cohérence des
+calculs HT/TVA/TTC et règles produits.</li>
+</ul>
+<h3 data-number="1.12.2" id="bonnes-pratiques-de-maintenance"><span
+class="header-section-number">1.12.2</span> 12.2 Bonnes pratiques de
+maintenance</h3>
+<ul>
+<li>Maintenir la couverture tests Feature (Pest + sqlite
+in-memory).</li>
+<li>Consolider la normalisation des réponses d’erreur API si l’API
+devient un contrat inter‑SI.</li>
+<li>Documenter explicitement la stratégie de monitoring, sauvegarde, et
+rollback.</li>
+</ul>
+<h3 data-number="1.12.3" id="stratégie-dévolution"><span
+class="header-section-number">1.12.3</span> 12.3 Stratégie
+d’évolution</h3>
+<ul>
+<li>Continuer à isoler les cas d’usage en Services/Actions.</li>
+<li>Étendre l’API v1 selon les conventions
+<code>Backend/docs/api-v1.md</code>.</li>
+</ul>
+<h3 data-number="1.12.4" id="dette-technique-identifiée-factuelle"><span
+class="header-section-number">1.12.4</span> 12.4 Dette technique
+identifiée (factuelle)</h3>
+<ul>
+<li>Absence de mécanisme de rollback/supervision/sauvegarde dans le
+dépôt.</li>
+<li>Gestion du secret IA côté frontend.</li>
+<li>Recette non définie.</li>
+</ul>
+<hr />
+<h2 data-number="1.13" id="annexes"><span
+class="header-section-number">1.13</span> 13. Annexes</h2>
+<h3 data-number="1.13.1" id="glossaire"><span
+class="header-section-number">1.13.1</span> 13.1 Glossaire</h3>
+<ul>
+<li><strong>Backoffice</strong> : interface d’administration servie par
+Laravel via Inertia.</li>
+<li><strong>Portail client</strong> : API dédiée aux comptes “client”
+(<code>portal_client=true</code>) protégée par Sanctum.</li>
+<li><strong>COD</strong> : Cash On Delivery (paiement à la livraison),
+utilisé pour les commandes web.</li>
+</ul>
+<h3 data-number="1.13.2" id="acronymes"><span
+class="header-section-number">1.13.2</span> 13.2 Acronymes</h3>
+<ul>
+<li><strong>DAT</strong> : Document d’Architecture Technique.</li>
+<li><strong>RBAC</strong> : Role-Based Access Control.</li>
+<li><strong>ORM</strong> : Object-Relational Mapping.</li>
+<li><strong>SSR</strong> : Server-Side Rendering.</li>
+</ul>
+<h3 data-number="1.13.3" id="références-techniques-dépôt"><span
+class="header-section-number">1.13.3</span> 13.3 Références techniques
+(dépôt)</h3>
+<ul>
+<li>OpenAPI : <code>Backend/xzone-openapi.yaml</code></li>
+<li>Conventions API v1 : <code>Backend/docs/api-v1.md</code></li>
+<li>Déploiement production :
+<code>Backend/docs/production.md</code></li>
+<li>Audit sécurité :
+<code>Backend/docs/security-audit-2026-01-18.md</code></li>
+<li>Scripts déploiement : <code>Backend/scripts/deploy-prod.ps1</code>,
+<code>Backend/scripts/deploy-prod.sh</code></li>
+</ul>
+<h3 data-number="1.13.4" id="notes-complémentaires"><span
+class="header-section-number">1.13.4</span> 13.4 Notes
+complémentaires</h3>
+<h4 data-number="1.13.4.1" id="export-du-dat"><span
+class="header-section-number">1.13.4.1</span> Export du DAT</h4>
+<p>Le dépôt inclut <code>scripts/export-dat.ps1</code> (à la racine)
+pour exporter ce fichier en HTML/DOCX/PDF via Pandoc. # Document
+d’Architecture Technique (DAT) — X‑Zone (ecommerce)</p>
+<p>Date : 25 janvier 2026<br />
+Périmètre analysé : dossiers <code>Backend/</code> et
+<code>frontend/</code> présents dans la workspace.</p>
+<blockquote>
+<p>Important : ce DAT est basé <strong>uniquement</strong> sur les
+artefacts visibles dans le code fourni (routes, modèles, middlewares,
+docs, manifests). Dans cette copie de workspace, le répertoire
+<code>Backend/config/</code> ne contient que <code>web_orders.php</code>
+(les fichiers de config Laravel standards ne sont pas visibles). Les
+constats “configuration” s’appuient donc sur
+<code>Backend/.env.example</code> et les documents
+<code>Backend/docs/*</code>.</p>
+</blockquote>
+<hr />
+<h2 data-number="1.14" id="présentation-générale-du-projet"><span
+class="header-section-number">1.14</span> 1. Présentation générale du
+projet</h2>
+<h3 data-number="1.14.1" id="objectif-de-lapplication"><span
+class="header-section-number">1.14.1</span> 1.1 Objectif de
+l’application</h3>
+<p>Le projet met en œuvre :</p>
+<ul>
+<li>Un <strong>backoffice</strong> (application interne) pour gérer
+catalogue, ventes, stocks, RH, helpdesk, etc., via <strong>Laravel +
+Inertia + React</strong>.</li>
+<li>Une <strong>API</strong> HTTP (préfixe <code>/api</code>) exposant :
+<ul>
+<li>des endpoints <strong>publics</strong> (catalogue, catégories, blog,
+avis, promotions, commandes web),</li>
+<li>un <strong>portail client</strong> protégé par <strong>Laravel
+Sanctum</strong> (login token + routes “client”).</li>
+</ul></li>
+<li>Un <strong>site frontend</strong> séparé (<code>frontend/</code>) :
+site vitrine/e-commerce (catalogue, panier, checkout COD, suivi de
+commande), pages marketing, chatbot/diagnostic.</li>
+</ul>
+<h3 data-number="1.14.2"
+id="périmètre-fonctionnel-daprès-routes-migrations"><span
+class="header-section-number">1.14.2</span> 1.2 Périmètre fonctionnel
+(d’après routes + migrations)</h3>
+<p>Principales capacités couvertes :</p>
+<ul>
+<li>Catalogue produits : produits, images, variantes, compatibilités,
+attributs dynamiques (approche EAV), documents produits.</li>
+<li>Catégories : arborescence, filtres par catégorie.</li>
+<li>Promotions : promotions et codes.</li>
+<li>Ventes B2B : clients, devis, factures, commandes.</li>
+<li>E-commerce web (public) : création de commande (COD), suivi de
+commande, historique de statuts.</li>
+<li>Avis produits : listing + soumission (côté API publique).</li>
+<li>Blog / actualités : listing + détail.</li>
+<li>Stock : mouvements, raisons, pièces jointes.</li>
+<li>Finance : transactions financières, catégories de dépenses,
+rappels.</li>
+<li>RH : départements, employés.</li>
+<li>Congés : types, soldes, demandes, actions, jours fériés,
+calendrier.</li>
+<li>Helpdesk / tickets : refonte de tables (migration
+<code>ticketing_refactor_support_tables</code> +
+<code>create_helpdesk_ticketing_tables</code>).</li>
+<li>Portail client : authentification token, profil, devis, factures,
+commandes, tickets, documents produits, sauvegarde de
+configurateur.</li>
+<li>Journalisation : logs d’activité (Spatie Activity Log), logs de
+login.</li>
+</ul>
+<h3 data-number="1.14.3" id="public-cible"><span
+class="header-section-number">1.14.3</span> 1.3 Public cible</h3>
+<ul>
+<li><strong>Équipes IT / Dev</strong> : installation, exploitation,
+déploiement, maintenance.</li>
+<li><strong>Développeurs Backend</strong> : Laravel, Eloquent, API
+Resources, middlewares, sécurité.</li>
+<li><strong>Développeurs Frontend</strong> : React/Vite (site public) +
+React/Inertia (backoffice).</li>
+<li><strong>Ops / SRE</strong> : variables d’environnement, storage,
+queue/scheduler, hardening.</li>
+</ul>
+<hr />
+<h2 data-number="1.15" id="architecture-globale-1"><span
+class="header-section-number">1.15</span> 2. Architecture globale</h2>
+<h3 data-number="1.15.1" id="vue-densemble"><span
+class="header-section-number">1.15.1</span> 2.1 Vue d’ensemble</h3>
+<p>Le projet est composé de deux applications frontend distinctes :</p>
+<ol type="1">
+<li><strong>Backend (Laravel 12)</strong></li>
+</ol>
+<ul>
+<li>Rend une UI backoffice via <strong>Inertia + React</strong> (sources
+dans <code>Backend/resources/js</code>).</li>
+<li>Expose une <strong>API</strong> dans
+<code>Backend/routes/api.php</code>.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Frontend (React + Vite)</strong></li>
+</ol>
+<ul>
+<li>Application SPA (React Router) dans <code>frontend/</code>.</li>
+<li>Consomme l’API Laravel via <code>fetch</code> (wrapper
+<code>frontend/utils/apiClient.ts</code>).</li>
+<li>En dev, utilise un <strong>proxy Vite</strong> vers Laravel pour
+<code>/api</code> et <code>/storage</code>.</li>
+</ul>
+<h3 data-number="1.15.2" id="schéma-logique-de-communication"><span
+class="header-section-number">1.15.2</span> 2.2 Schéma logique de
+communication</h3>
+<pre class="mermaid"><code>flowchart LR
+  U[Utilisateur Web] --&gt;|HTTP(S)| FE[frontend/ (React Router + Vite build)]
+  FE --&gt;|GET/POST /api/*| API[Backend (Laravel) routes/api.php]
+  FE --&gt;|GET /storage/*| ST[Backend public/storage]
+
+  A[Admin/IT] --&gt;|HTTP(S)| BO[Backoffice Inertia (Laravel web routes)]
+  BO --&gt;|Inertia requests| LAR[Backend (Laravel)]
+
+  API --&gt; DB[(Base de données)]
+  LAR --&gt; DB
+  LAR --&gt; FS[(Storage: storage/app/public)]
+  LAR --&gt; Q[(Queue: queue:listen/work)]</code></pre>
+<h3 data-number="1.15.3"
+id="choix-techniques-et-justifications-daprès-manifests"><span
+class="header-section-number">1.15.3</span> 2.3 Choix techniques et
+justifications (d’après manifests)</h3>
+<ul>
+<li><strong>Laravel 12</strong> (<code>Backend/composer.json</code>) :
+framework backend, routage, validation, sécurité (CSRF/session),
+Eloquent ORM.</li>
+<li><strong>Inertia.js + React</strong> (backoffice) : UI moderne sans
+API “interne” dédiée, partage de props serveur→client, DX.</li>
+<li><strong>React + Vite</strong> (site public séparé) : découplage
+marketing/e-commerce, routing côté client, optimisation build.</li>
+<li><strong>Laravel Sanctum</strong> : authentification API via tokens
+personnels pour le portail client.</li>
+<li><strong>Spatie Permission</strong> : RBAC (rôles/permissions) pour
+backoffice + endpoints v1.</li>
+<li><strong>Spatie Activity Log</strong> : audit/traçabilité d’actions
+sur des modèles (ex: <code>User</code>, <code>Product</code>).</li>
+<li><strong>Rate limiting</strong> dédié : protection des endpoints
+publics et sensibles (recherche, login client, tickets).</li>
+</ul>
+<hr />
+<h2 data-number="1.16" id="backend"><span
+class="header-section-number">1.16</span> 3. Backend</h2>
+<h3 data-number="1.16.1" id="stack-technique"><span
+class="header-section-number">1.16.1</span> 3.1 Stack technique</h3>
+<ul>
+<li>Langage : PHP (contrainte <code>php: ^8.2</code>).</li>
+<li>Framework : Laravel <code>^12.0</code>.</li>
+<li>ORM : Eloquent.</li>
+<li>Authentification :
+<ul>
+<li>Backoffice : auth Laravel (routes
+<code>Backend/routes/auth.php</code>) + email verification
+(<code>verified</code>).</li>
+<li>Portail client / API : Laravel Sanctum (tokens personnels).</li>
+</ul></li>
+<li>Autorisations : Spatie Permission
+(<code>spatie/laravel-permission</code>).</li>
+<li>Audit &amp; logs d’activité :
+<code>spatie/laravel-activitylog</code>.</li>
+<li>Génération documents : <code>barryvdh/laravel-dompdf</code>.</li>
+<li>Exports : <code>maatwebsite/excel</code>.</li>
+<li>Media/Images : <code>intervention/image</code>.</li>
+<li>Front backoffice : Inertia (<code>inertiajs/inertia-laravel</code>)
++ React + Vite.</li>
+</ul>
+<p>Base de données : - Visible via migrations (création tables métiers)
+et <code>Backend/.env.example</code> (par défaut
+<code>DB_CONNECTION=sqlite</code>). - Le document
+<code>Backend/docs/production.md</code> mentionne
+MySQL/MariaDB/PostgreSQL comme options supportées.</p>
+<h3 data-number="1.16.2"
+id="structure-des-dossiers-et-responsabilités"><span
+class="header-section-number">1.16.2</span> 3.2 Structure des dossiers
+et responsabilités</h3>
+<ul>
+<li><code>Backend/app/Http/Controllers/</code> : contrôleurs Web
+(Inertia) + API.
+<ul>
+<li><code>Backend/app/Http/Controllers/Api</code> : API publique.</li>
+<li><code>Backend/app/Http/Controllers/Api/Client</code> : API portail
+client (Sanctum).</li>
+<li><code>Backend/app/Http/Controllers/Api/V1</code> : API backoffice v1
+(Sanctum + rôle).</li>
+</ul></li>
+<li><code>Backend/app/Http/Middleware/</code> : middlewares custom
+(onboarding, sécurité headers, portail client, Inertia).</li>
+<li><code>Backend/app/Models/</code> : modèles Eloquent (catalogue,
+vente, RH, tickets, etc.).</li>
+<li><code>Backend/database/migrations/</code> : schéma DB (source de
+vérité).</li>
+<li><code>Backend/resources/js/</code> : application React Inertia
+(pages, layouts, utils, types, SSR).</li>
+<li><code>Backend/routes/</code> :
+<ul>
+<li><code>web.php</code> : backoffice (protégé auth/verified +
+permissions)</li>
+<li><code>api.php</code> : API publique + portail client + API v1</li>
+<li><code>auth.php</code> : auth backoffice
+(login/register/reset/verify)</li>
+</ul></li>
+<li><code>Backend/docs/</code> : docs internes (API v1, production,
+audit sécurité).</li>
+<li><code>Backend/scripts/</code> : scripts de déploiement (PowerShell +
+bash).</li>
+</ul>
+<h3 data-number="1.16.3" id="principaux-modules-et-flux-métier"><span
+class="header-section-number">1.16.3</span> 3.3 Principaux modules et
+flux métier</h3>
+<h4 data-number="1.16.3.1" id="catalogue-contenu"><span
+class="header-section-number">1.16.3.1</span> 3.3.1 Catalogue &amp;
+contenu</h4>
+<ul>
+<li>Catalogue public :
+<ul>
+<li>Listing produits, détail par UUID, détail par slug, recherche,
+nouveautés/best-sellers, recommandés.</li>
+<li>Documents produit.</li>
+<li>Avis produits (GET/POST) avec throttling.</li>
+</ul></li>
+<li>Catégories : arborescence, filtres par catégorie, produits par
+catégorie.</li>
+<li>Blog : listing + détail.</li>
+</ul>
+<h4 data-number="1.16.3.2" id="e-commerce-web-commandes-publiques"><span
+class="header-section-number">1.16.3.2</span> 3.3.2 E-commerce web
+(commandes publiques)</h4>
+<ul>
+<li>Création de commande “web” via endpoint public (checkout COD).</li>
+<li>Suivi de commande public via <code>order_number + email</code>.</li>
+<li>Tables dédiées : <code>web_orders</code>,
+<code>web_order_items</code>,
+<code>web_order_status_histories</code>.</li>
+<li>Configuration associée :
+<code>Backend/config/web_orders.php</code>.</li>
+</ul>
+<h4 data-number="1.16.3.3" id="portail-client-api-protégée"><span
+class="header-section-number">1.16.3.3</span> 3.3.3 Portail client (API
+protégée)</h4>
+<ul>
+<li>Authentification : <code>POST /api/client/login</code>.
+<ul>
+<li>Validation email/password, <code>Auth::attempt</code>, vérification
+<code>portal_client</code>, émission token Sanctum.</li>
+</ul></li>
+<li>Autorisation : middleware <code>portal_client</code> (alias vers
+<code>EnsurePortalClient</code>).</li>
+<li>Fonctions exposées : profil, devis, factures, commandes, tickets,
+documents, configurateur.</li>
+</ul>
+<h4 data-number="1.16.3.4" id="backoffice-ui-inertia"><span
+class="header-section-number">1.16.3.4</span> 3.3.4 Backoffice (UI
+Inertia)</h4>
+<ul>
+<li>Routes <code>Backend/routes/web.php</code> : zone <code>auth</code>
++ <code>verified</code>.</li>
+<li>Autorisation fine par permissions :
+<code>-&gt;middleware('permission:xxx')</code> sur la majorité des
+routes.</li>
+<li>Partage global Inertia : user/roles/permissions + settings
+(branding/SEO/contacts) via <code>AppSetting</code>.</li>
+</ul>
+<h4 data-number="1.16.3.5" id="api-backoffice-v1"><span
+class="header-section-number">1.16.3.5</span> 3.3.5 API backoffice
+v1</h4>
+<ul>
+<li>Préfixe <code>/api/v1</code>.</li>
+<li>Protégée : <code>auth:sanctum</code> +
+<code>role:Admin|SuperAdmin</code>.</li>
+<li>Endpoints en lecture (GET index/show) sur référentiels et entités
+(produits, devis, factures, RH, etc.).</li>
+<li>Conventions documentées dans
+<code>Backend/docs/api-v1.md</code>.</li>
+</ul>
+<h3 data-number="1.16.4" id="authentification-autorisations"><span
+class="header-section-number">1.16.4</span> 3.4 Authentification &amp;
+autorisations</h3>
+<h4 data-number="1.16.4.1" id="backoffice-web"><span
+class="header-section-number">1.16.4.1</span> 3.4.1 Backoffice
+(web)</h4>
+<ul>
+<li>Routes auth : <code>Backend/routes/auth.php</code>.</li>
+<li>Zone backoffice : group middleware <code>['auth', 'verified']</code>
+dans <code>Backend/routes/web.php</code>.</li>
+<li>Autorisations : Spatie Permission via middleware
+<code>permission:*</code>.</li>
+<li>Bypass SuperAdmin : <code>Gate::before</code> dans
+<code>Backend/app/Providers/AuthServiceProvider.php</code>.</li>
+</ul>
+<h4 data-number="1.16.4.2" id="api-portail-client"><span
+class="header-section-number">1.16.4.2</span> 3.4.2 API Portail
+client</h4>
+<ul>
+<li>Login :
+<code>Backend/app/Http/Controllers/Api/Client/AuthController.php</code>.</li>
+<li>Token : <code>createToken('client-portal')</code>.</li>
+<li>Accès aux endpoints : <code>auth:sanctum</code> +
+<code>portal_client</code>.</li>
+</ul>
+<h4 data-number="1.16.4.3" id="api-v1"><span
+class="header-section-number">1.16.4.3</span> 3.4.3 API v1</h4>
+<ul>
+<li><code>auth:sanctum</code> + <code>role:Admin|SuperAdmin</code>
+(Spatie).</li>
+</ul>
+<h3 data-number="1.16.5" id="gestion-des-erreurs-et-logs"><span
+class="header-section-number">1.16.5</span> 3.5 Gestion des erreurs et
+logs</h3>
+<ul>
+<li>Gestion des 404 “modèle introuvable” côté API : rendu JSON
+standardisé dans <code>Backend/bootstrap/app.php</code>.</li>
+<li>Logs applicatifs : présence de <code>storage/logs</code> et mention
+dans <code>Backend/docs/production.md</code>.</li>
+<li>Logs d’activité (audit) : Spatie Activity Log (ex: <code>User</code>
+et <code>Product</code> utilisent <code>LogsActivity</code>).</li>
+<li>Logs de login : tables + contrôleurs dédiés (routes web contiennent
+<code>LoginLogController</code>, exports associés).</li>
+</ul>
+<h3 data-number="1.16.6"
+id="configuration-environnements-variables-secrets"><span
+class="header-section-number">1.16.6</span> 3.6 Configuration
+(environnements, variables, secrets)</h3>
+<ul>
+<li>Variables principales (extrait) : <code>Backend/.env.example</code>.
+<ul>
+<li><code>APP_ENV</code>, <code>APP_DEBUG</code>,
+<code>APP_URL</code></li>
+<li>DB : <code>DB_CONNECTION</code> (sqlite par défaut), etc.</li>
+<li><code>SESSION_DRIVER</code>, <code>CACHE_STORE</code>,
+<code>QUEUE_CONNECTION</code></li>
+<li>Logging : <code>LOG_CHANNEL</code>, <code>LOG_LEVEL</code></li>
+<li>Vite : <code>VITE_APP_NAME</code></li>
+</ul></li>
+</ul>
+<p>Configuration spécifique “web orders” :
+<code>Backend/config/web_orders.php</code>.</p>
+<h3 data-number="1.16.7"
+id="sécurité-bonnes-pratiques-implémentées"><span
+class="header-section-number">1.16.7</span> 3.7 Sécurité (bonnes
+pratiques implémentées)</h3>
+<ul>
+<li>Rate limiting :
+<ul>
+<li><code>public-api</code> (120/min/IP) et <code>public-search</code>
+(30/min/IP) + throttles spécifiques (login client, tickets,
+configurateur) dans
+<code>Backend/app/Providers/AppServiceProvider.php</code>.</li>
+<li>Application sur routes publiques :
+<code>Backend/routes/api.php</code>.</li>
+</ul></li>
+<li>Headers de sécurité : middleware
+<code>Backend/app/Http/Middleware/SecurityHeaders.php</code> (nosniff,
+frame options, referrer policy, permissions policy, HSTS si HTTPS).</li>
+<li>Protection portail client : <code>EnsurePortalClient</code> (403
+JSON si non autorisé).</li>
+<li>RBAC : Spatie Permission + bypass SuperAdmin.</li>
+<li>Audit de dépendances : synthèse
+<code>Backend/docs/security-audit-2026-01-18.md</code>.</li>
+</ul>
+<h3 data-number="1.16.8" id="api-principes-conventions-versioning"><span
+class="header-section-number">1.16.8</span> 3.8 API : principes,
+conventions, versioning</h3>
+<ul>
+<li>Préfixe général : <code>/api</code> (cf. OpenAPI
+<code>Backend/xzone-openapi.yaml</code>).</li>
+<li>Séparation logique :
+<ul>
+<li>API publique : catalogue/catégories/blog/promos/commandes web.</li>
+<li>Portail client : <code>/client/*</code> protégé Sanctum.</li>
+<li>API Backoffice v1 : <code>/v1/*</code> protégé Sanctum + rôle.</li>
+</ul></li>
+<li>Conventions v1 (pagination, tri, includes) :
+<code>Backend/docs/api-v1.md</code>.</li>
+<li>OpenAPI : description et schémas dans
+<code>Backend/xzone-openapi.yaml</code>.</li>
+</ul>
+<hr />
+<h2 data-number="1.17" id="frontend-dossier-frontend"><span
+class="header-section-number">1.17</span> 4. Frontend (dossier
+<code>frontend/</code>)</h2>
+<h3 data-number="1.17.1" id="stack-technique-1"><span
+class="header-section-number">1.17.1</span> 4.1 Stack technique</h3>
+<ul>
+<li>React 19 + TypeScript.</li>
+<li>Vite 6.</li>
+<li>Routing : React Router (<code>react-router-dom</code>).</li>
+<li>UI : composants internes + icônes <code>lucide-react</code>.</li>
+<li>PDF : <code>jspdf</code> + <code>jspdf-autotable</code>.</li>
+<li>IA (chatbot/diagnostic) : dépendance
+<code>@google/genai</code>.</li>
+</ul>
+<p>Remarque : le README mentionne Tailwind CSS “via CDN”. Le
+<code>package.json</code> du <code>frontend/</code> ne déclare pas
+Tailwind en dépendance.</p>
+<h3 data-number="1.17.2" id="architecture-des-composants-1"><span
+class="header-section-number">1.17.2</span> 4.2 Architecture des
+composants</h3>
+<ul>
+<li>Point d’entrée : <code>frontend/index.tsx</code> (mount React +
+<code>LanguageProvider</code>).</li>
+<li>App + routes : <code>frontend/App.tsx</code>.
+<ul>
+<li>Lazy-loading des pages (React.lazy) + <code>Suspense</code>.</li>
+<li>Layout conditionnel : header/footer désactivés sur
+<code>'/client-area/*'</code>.</li>
+</ul></li>
+<li>Composants réutilisables : <code>frontend/components/</code>.</li>
+<li>Gestion multi-langue :
+<code>frontend/contexts/LanguageContext</code> +
+<code>frontend/translations.ts</code>.</li>
+<li>Panier : <code>frontend/contexts/CartContext.tsx</code>.</li>
+</ul>
+<h3 data-number="1.17.3" id="gestion-des-états-et-formulaires"><span
+class="header-section-number">1.17.3</span> 4.3 Gestion des états et
+formulaires</h3>
+<ul>
+<li>State management : Context API + hooks.</li>
+<li>Panier persisté : <code>localStorage</code> (clé
+<code>xzone_cart_v1</code>).</li>
+<li>Checkout : formulaire contrôlé dans
+<code>frontend/pages/Checkout.tsx</code>.</li>
+</ul>
+<h3 data-number="1.17.4" id="communication-avec-le-backend-1"><span
+class="header-section-number">1.17.4</span> 4.4 Communication avec le
+Backend</h3>
+<ul>
+<li>Client HTTP : wrapper <code>fetch</code> dans
+<code>frontend/utils/apiClient.ts</code>.
+<ul>
+<li><code>VITE_API_BASE_URL</code> (par défaut <code>/api</code>).</li>
+<li>Gestion d’erreurs via exception <code>ApiError</code> (message
+dérivé du body JSON si présent).</li>
+</ul></li>
+<li>APIs catalogue : <code>frontend/utils/apiCatalog.ts</code>.</li>
+<li>APIs commandes : <code>frontend/utils/apiOrders.ts</code>.</li>
+<li>En dev : proxy Vite
+<ul>
+<li><code>/api</code> et <code>/storage</code> proxifiés vers
+<code>VITE_API_PROXY_TARGET</code> (voir
+<code>frontend/vite.config.ts</code>).</li>
+</ul></li>
+</ul>
+<h3 data-number="1.17.5" id="sécurité-côté-frontend"><span
+class="header-section-number">1.17.5</span> 4.5 Sécurité côté
+Frontend</h3>
+<ul>
+<li>Le client <code>apiClient</code> n’implémente pas d’auth token (pas
+d’<code>Authorization: Bearer</code> ajouté automatiquement).</li>
+<li>Le “Client Area” visible dans
+<code>frontend/pages/ClientArea.tsx</code> contient principalement des
+données mockées dans la portion lue ; la consommation effective de l’API
+portail client devra être confirmée/complétée si l’objectif est un
+portail client authentifié sur ce frontend.</li>
+<li>Les secrets : la config Vite mappe <code>GEMINI_API_KEY</code> en
+<code>process.env.*</code> au build
+(<code>frontend/vite.config.ts</code>). En pratique, cela rend la clé
+accessible au code frontend ; si la clé doit rester secrète, un proxy
+serveur est recommandé.</li>
+</ul>
+<hr />
+<h2 data-number="1.18" id="installation-et-démarrage"><span
+class="header-section-number">1.18</span> 5. Installation et
+démarrage</h2>
+<h3 data-number="1.18.1" id="prérequis"><span
+class="header-section-number">1.18.1</span> 5.1 Prérequis</h3>
+<ul>
+<li>PHP &gt;= 8.2 (recommandé 8.3 selon
+<code>Backend/docs/production.md</code>).</li>
+<li>Composer.</li>
+<li>Node.js &gt;= 18.18 (contrainte
+<code>Backend/package.json</code>).</li>
+<li>Base de données (sqlite par défaut en dev selon
+<code>.env.example</code>, autres possibles selon doc prod).</li>
+</ul>
+<h3 data-number="1.18.2" id="installation-backend"><span
+class="header-section-number">1.18.2</span> 5.2 Installation
+Backend</h3>
+<p>Depuis <code>Backend/</code> :</p>
+<ul>
+<li><code>composer install</code></li>
+<li><code>copy .env.example .env</code> (ou équivalent)</li>
+<li><code>php artisan key:generate</code></li>
+<li><code>php artisan migrate</code></li>
+<li><code>npm install</code></li>
+</ul>
+<p>Script de dev intégré : <code>composer run dev</code> (serve +
+queue:listen + vite).</p>
+<h3 data-number="1.18.3" id="installation-frontend"><span
+class="header-section-number">1.18.3</span> 5.3 Installation
+Frontend</h3>
+<p>Depuis <code>frontend/</code> :</p>
+<ul>
+<li><code>npm install</code></li>
+<li>Copier/adapter <code>.env.example</code> (au minimum
+<code>VITE_API_PROXY_TARGET</code> en dev si besoin)</li>
+</ul>
+<h3 data-number="1.18.4" id="lancement-en-local"><span
+class="header-section-number">1.18.4</span> 5.4 Lancement en local</h3>
+<p>Option A (Backoffice + API Laravel + assets Inertia) : - Dans
+<code>Backend/</code> : <code>composer run dev</code></p>
+<p>Option B (site frontend séparé + API Laravel) : - Lancer Laravel (ex:
+<code>php artisan serve</code> dans <code>Backend/</code>). - Dans
+<code>frontend/</code> : <code>npm run dev</code>.</p>
+<h3 data-number="1.18.5" id="variables-denvironnement-1"><span
+class="header-section-number">1.18.5</span> 5.5 Variables
+d’environnement</h3>
+<p>Backend : voir <code>Backend/.env.example</code>.<br />
+Frontend : voir <code>frontend/.env.example</code>.</p>
+<hr />
+<h2 data-number="1.19" id="bonnes-pratiques-et-conventions"><span
+class="header-section-number">1.19</span> 6. Bonnes pratiques et
+conventions</h2>
+<h3 data-number="1.19.1" id="nommage-structure"><span
+class="header-section-number">1.19.1</span> 6.1 Nommage &amp;
+structure</h3>
+<ul>
+<li>Backend : séparation claire <code>Controllers</code> /
+<code>Models</code> / <code>Middleware</code> / <code>Resources</code> /
+<code>Migrations</code>.</li>
+<li>API : regroupement par contexte (<code>Api</code>,
+<code>Api/Client</code>, <code>Api/V1</code>).</li>
+<li>Frontend : <code>pages/</code>, <code>components/</code>,
+<code>contexts/</code>, <code>utils/</code>.</li>
+</ul>
+<h3 data-number="1.19.2" id="tests"><span
+class="header-section-number">1.19.2</span> 6.2 Tests</h3>
+<ul>
+<li>Framework : Pest (<code>Backend/require-dev</code> +
+<code>Backend/tests/Pest.php</code>).</li>
+<li>Tests Feature : utilisation de <code>RefreshDatabase</code> et DB
+sqlite in-memory (cf. <code>Backend/phpunit.xml</code>).</li>
+</ul>
+<h3 data-number="1.19.3" id="linting-formatage"><span
+class="header-section-number">1.19.3</span> 6.3 Linting / formatage</h3>
+<ul>
+<li>Backend JS/TS (Inertia) : ESLint (flat config) + Prettier (voir
+<code>Backend/eslint.config.js</code>, scripts dans
+<code>Backend/package.json</code>).</li>
+<li>Backend PHP : <code>laravel/pint</code> disponible en dev
+(<code>Backend/composer.json</code>).</li>
+</ul>
+<hr />
+<h2 data-number="1.20" id="déploiement"><span
+class="header-section-number">1.20</span> 7. Déploiement</h2>
+<h3 data-number="1.20.1" id="stratégie"><span
+class="header-section-number">1.20.1</span> 7.1 Stratégie</h3>
+<ul>
+<li>Backend : procédure décrite dans
+<code>Backend/docs/production.md</code>.
+<ul>
+<li><code>composer install --no-dev --optimize-autoloader</code></li>
+<li>migrations <code>php artisan migrate --force</code></li>
+<li>build Vite pour le backoffice (dans <code>Backend/</code>) ou via
+CI</li>
+<li>caches Laravel (<code>config:cache</code>, <code>route:cache</code>,
+etc.)</li>
+</ul></li>
+</ul>
+<h3 data-number="1.20.2" id="environnements-1"><span
+class="header-section-number">1.20.2</span> 7.2 Environnements</h3>
+<ul>
+<li>Dev : <code>APP_ENV=local</code>, <code>APP_DEBUG=true</code>
+(cf. <code>.env.example</code>).</li>
+<li>Prod : recommandations dans <code>Backend/docs/production.md</code>
+et <code>Backend/docs/security-audit-2026-01-18.md</code> (debug off,
+cookies secure, caches).</li>
+</ul>
+<h3 data-number="1.20.3" id="points-de-vigilance"><span
+class="header-section-number">1.20.3</span> 7.3 Points de vigilance</h3>
+<ul>
+<li>Storage : <code>php artisan storage:link</code> (serving
+<code>/storage/*</code>).</li>
+<li>Droits d’écriture : <code>storage/</code> et
+<code>bootstrap/cache/</code>.</li>
+<li>Secrets : permissions strictes sur <code>.env</code>.</li>
+<li>Queue &amp; scheduler : config cron + superviseur (cf. doc
+production).</li>
+</ul>
+<p>Scripts fournis : - PowerShell :
+<code>Backend/scripts/deploy-prod.ps1</code> - Bash :
+<code>Backend/scripts/deploy-prod.sh</code></p>
+<hr />
+<h2 data-number="1.21" id="maintenance-et-évolutivité"><span
+class="header-section-number">1.21</span> 8. Maintenance et
+évolutivité</h2>
+<h3 data-number="1.21.1" id="points-clés-pour-la-maintenance"><span
+class="header-section-number">1.21.1</span> 8.1 Points clés pour la
+maintenance</h3>
+<ul>
+<li>La DB est fortement “métier” (beaucoup de modules) : migrations sont
+la référence.</li>
+<li>L’API publique est throttlée : ajuster centralement via
+<code>RateLimiter</code> (pas route par route).</li>
+<li>RBAC : permissions nombreuses côté backoffice ; maintenir une
+matrice rôles/permissions cohérente.</li>
+<li>Portail client : flag <code>portal_client</code> sur
+<code>users</code> + middleware dédié.</li>
+</ul>
+<h3 data-number="1.21.2"
+id="axes-damélioration-possibles-basés-sur-constats-code"><span
+class="header-section-number">1.21.2</span> 8.2 Axes d’amélioration
+possibles (basés sur constats code)</h3>
+<ul>
+<li>Unifier/clarifier la stratégie “portail client” :
+<ul>
+<li>Le backend expose une API Sanctum complète.</li>
+<li>Le <code>frontend/</code> n’embarque pas (dans les portions
+observées) de gestion de token (login + stockage +
+<code>Authorization</code>), et <code>ClientArea</code> semble maquetter
+des données.</li>
+</ul></li>
+<li>Clés IA : <code>GEMINI_API_KEY</code> exposée côté frontend par
+<code>define</code> Vite ; si besoin de confidentialité, déplacer
+l’appel IA côté backend.</li>
+<li>Standardisation erreurs : étendre le rendu JSON (au-delà du
+<code>ModelNotFoundException</code>) si l’objectif est une API homogène
+(ex: validation errors, exceptions applicatives).</li>
+</ul>
+<h3 data-number="1.21.3" id="scalabilité"><span
+class="header-section-number">1.21.3</span> 8.3 Scalabilité</h3>
+<ul>
+<li>Le backend est prêt pour :
+<ul>
+<li>exécution asynchrone via queue (<code>queue:listen</code> en dev
+script composer),</li>
+<li>caching (variables <code>CACHE_STORE</code>, <code>REDIS_*</code>
+présentes dans <code>.env.example</code>).</li>
+</ul></li>
+<li>Les endpoints “coûteux” sont déjà throttlés (recherche).</li>
+</ul>
+<hr />
+<h2 data-number="1.22" id="annexes-1"><span
+class="header-section-number">1.22</span> Annexes</h2>
+<h3 data-number="1.22.1" id="a.-références-internes"><span
+class="header-section-number">1.22.1</span> A. Références internes</h3>
+<ul>
+<li>OpenAPI : <code>Backend/xzone-openapi.yaml</code></li>
+<li>Conventions API v1 : <code>Backend/docs/api-v1.md</code></li>
+<li>Procédure prod : <code>Backend/docs/production.md</code></li>
+<li>Audit sécurité :
+<code>Backend/docs/security-audit-2026-01-18.md</code></li>
+</ul>
+<h3 data-number="1.22.2" id="b.-export-du-document-html-docx-pdf"><span
+class="header-section-number">1.22.2</span> B. Export du document (HTML
+/ DOCX / PDF)</h3>
+<p>Le projet inclut un script PowerShell d’export :
+<code>scripts/export-dat.ps1</code>.</p>
+<ol type="1">
+<li>Depuis la racine du projet, lancer :</li>
+</ol>
+<ul>
+<li><code>powershell -ExecutionPolicy Bypass -File .\scripts\export-dat.ps1</code></li>
+</ul>
+<ol start="2" type="1">
+<li>Sorties générées (par défaut) dans <code>dist-docs/</code> :</li>
+</ol>
+<ul>
+<li><code>DAT-X-Zone.html</code></li>
+<li><code>DAT-X-Zone.docx</code></li>
+<li><code>DAT-X-Zone.pdf</code> (si moteur LaTeX disponible)</li>
+</ul>
+<p>Pré-requis :</p>
+<ul>
+<li>Pandoc (obligatoire)</li>
+<li>Pour PDF : moteur LaTeX (ex: MiKTeX)</li>
+</ul>
+</body>
+</html>

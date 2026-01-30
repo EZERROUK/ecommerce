@@ -1,0 +1,4 @@
+[Sun Jan 25 18:56:01 2026] PHP 8.3.4 Development Server (http://127.0.0.1:8012) started
+[Sun Jan 25 18:57:56 2026] 127.0.0.1:63412 Accepted
+[Sun Jan 25 18:57:56 2026] 127.0.0.1:63412 Closed without sending a request; it was probably just an unused speculative preconnection
+[Sun Jan 25 18:57:56 2026] 127.0.0.1:63412 Closing
