@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-01-25T17:56:01.746Z",
+  "manifest": "Backend/public/build/manifest.json",
+  "outDir": "Backend/public/dat-preview",
+  "entry_js": "/build/assets/app-zt2wF6VC.js",
+  "entry_css": [
+    "/build/assets/app-DpktYG3i.css"
+  ],
+  "pages": [
+    "/dat-preview/login.html",
+    "/dat-preview/dashboard.html",
+    "/dat-preview/products.html",
+    "/dat-preview/categories.html",
+    "/dat-preview/quotes.html"
+  ]
+}
