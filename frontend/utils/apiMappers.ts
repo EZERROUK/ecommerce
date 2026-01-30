@@ -3,6 +3,8 @@ import type { ApiProduct } from './apiTypes';
 
 const DEFAULT_CATEGORY: Product['category'] = 'accessory';
 
+const STORAGE_BASE_URL = (import.meta.env.VITE_STORAGE_BASE_URL || '').toString().replace(/\/+$/, '');
+
 function guessCategory(api: ApiProduct): Product['category'] {
   const slug = (api.category?.slug || '').toLowerCase();
   const name = (api.category?.name || '').toLowerCase();
@@ -30,7 +32,9 @@ export function apiProductToUiProduct(api: ApiProduct): Product {
 
   const primaryImage = (api.images || []).find(i => i?.is_primary) ?? (api.images || [])[0];
   const imagePath = primaryImage?.path ? String(primaryImage.path).replace(/^\/+/, '') : '';
-  const image = imagePath ? `/storage/${imagePath}` : '';
+  const image = imagePath
+    ? (STORAGE_BASE_URL ? `${STORAGE_BASE_URL}/storage/${imagePath}` : `/storage/${imagePath}`)
+    : '';
 
   const documents = (api.documents || [])
     .filter((d: any) => d && (d.url || d.file_url))
