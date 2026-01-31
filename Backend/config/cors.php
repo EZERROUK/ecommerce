@@ -17,8 +17,8 @@ return [
 
     'allowed_origins' => [
         env('FRONTEND_URL', 'http://localhost:3001'),
-        'https://TONDOMAINE.com',
-        'https://www.TONDOMAINE.com',
+        'https://x-zone.globalglimpse.ma',
+        'https://globalglimpse.ma',
     ],
 
     'allowed_origins_patterns' => [],
